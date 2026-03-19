@@ -1,6 +1,6 @@
 # Zephyr
 
-> 关联概念：[[CMake]] | [[Kconfig]] | [[DeviceTree]] | [[Overlay]] | [[West]] | [[Zephyr启动流程]] | [[Zephyr开发流程]]
+> 关联概念：[[CMake]] | [[Kconfig]] | [[DeviceTree]] | [[Overlay]] | [[West]] | [[Zephyr启动与设备初始化]] | [[Zephyr开发流程]] | [[Zephyr编译系统]]
 
 ## 一、Zephyr 是什么
 
@@ -25,43 +25,20 @@ Zephyr 不是一个 HAL 库，而是一个**可组合的嵌入式操作系统平
 负责多线程调度、信号量（Semaphore）、消息队列（Queue）、定时器等。是连接应用层和底层硬件的"大脑"。
 
 ### 3. Kconfig（功能配置）
-通过 `prj.conf` 像开关一样控制内核功能：
-```ini
-CONFIG_GPIO=y      # 开启 GPIO 驱动
-CONFIG_PRINTK=y    # 开启串口打印
-CONFIG_UART=y      # 开启 UART
-```
-不开启 = 不编译进固件，节省 Flash 空间。
+通过 `prj.conf` 像开关一样控制内核功能。详见 [[Kconfig]]。
 
 ### 4. DeviceTree（硬件描述）
-用 `.dts` 语言描述硬件：
-```dts
-uart1 {
-    status = "okay";
-    current-speed = <115200>;
-};
-```
-解耦硬件配置与驱动代码。换板子只改 DTS，C 代码不动。
+用 `.dts` 语言描述硬件，解耦硬件配置与驱动代码。详见 [[DeviceTree]] 和 [[Overlay]]。
 
 ---
 
-## 三、完整构建流程
+## 三、构建流程
+
+完整构建链详见 [[Zephyr编译系统]]。简要概述：
 
 ```
-west build -b stm32f103c8
-    ↓
-west（多仓库管理）
-    ↓
-CMake（发现模块、生成构建系统）
-    ↓
-Kconfig（解析 prj.conf，决定编译哪些功能）
-    ↓
-Devicetree（解析硬件描述，生成 devicetree_generated.h）
-    ↓
-Ninja（高速并行编译）
-    ↓
-arm-none-eabi-gcc
-    ↓
+west build
+    ↓ West → CMake → Kconfig → DeviceTree → Ninja → GCC
 zephyr.elf / zephyr.bin
 ```
 
@@ -105,17 +82,18 @@ Architecture（ARM、RISC-V、x86 适配）
 ## 六、应用程序如何使用设备
 
 ```c
-// 通过别名获取设备（不需要初始化，系统已自动完成）
+// 通过标签获取设备（不需要初始化，系统已自动完成）
 const struct device *uart = DEVICE_DT_GET(DT_NODELABEL(uart1));
 
 // 直接使用 API
 uart_poll_out(uart, 'A');
 ```
 
-遇到问题的排查思路：
-- 引脚/硬件不对 → 检查 **Devicetree / Overlay**
-- 功能没开启（打印不出来、没有蓝牙）→ 检查 **Kconfig / prj.conf**
-- 逻辑不对 → 检查 **Application 代码**
+排查思路：
+- 引脚/硬件不对 → 检查 [[DeviceTree]] / [[Overlay]]
+- 功能没开启 → 检查 [[Kconfig]]
+- 设备未初始化 → 检查 [[Zephyr启动与设备初始化]]
+- 逻辑不对 → 检查 Application 代码
 
 ---
 

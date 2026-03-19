@@ -1,117 +1,99 @@
-在 Zephyr 中，代码只是冰山一角，**Kconfig** 才是控制冰山移动的舵舵。如果你能玩转 Kconfig，你就能在不改一行 C 代码的前提下，把内核从“全功能战舰”缩减成“轻量级小艇”。
+# Kconfig
+
+> 关联概念：[[Zephyr]] | [[CMake]] | [[DeviceTree]] | [[Zephyr编译系统]]
+
+## 一、本质
+
+Kconfig 是 Zephyr 的**功能开关系统**，控制哪些代码被编译进固件。
+
+```
+你写 prj.conf（开关清单）
+    ↓ Kconfig 解析
+.config（最终配置）
+    ↓ 生成
+autoconf.h（C 语言宏）
+    ↓ 条件编译
+只有被开启的功能才进入固件
+```
+
+不开启 = 代码根本不参与编译，节省 Flash 和 RAM。
 
 ---
 
-## 🏗️ 1. Kconfig 的工作原理
+## 二、三层结构
 
-Zephyr 的配置系统采用了类似于 Linux 内核的机制。它是一个**三层结构**：
+| 层 | 文件 | 作用 |
+|----|------|------|
+| 定义层 | `Kconfig` 文件（Zephyr 源码里） | 规定"有哪些开关可以拨" |
+| 配置层 | `prj.conf`（你的项目） | 你决定"拨哪些开关" |
+| 生成层 | `autoconf.h`（编译时生成） | 转成 C 宏供代码使用 |
 
-1. **定义层 (`Kconfig` 文件)**：规定了“有哪些开关可以拨”。比如定义了 `CONFIG_STDOUT_CONSOLE` 这个开关。
-    
-2. **配置层 (`prj.conf`)**：你作为开发者，告诉系统“我要拨哪些开关”。
-    
-3. **生成层 (`autoconf.h`)**：编译时，系统把你的选择转换成 C 语言的宏（`#define`），让 C 代码可以根据宏来决定是否编译某段逻辑。
-    
-
----
-
-## 📝 2. `prj.conf` 的配置语法
-
-这是你最常打交道的文件。它的语法极简，但有几点核心规则：
-
-- **赋值**：`CONFIG_SOMETHING=y`（启用）或 `CONFIG_SOMETHING=n`（禁用）。
-    
-- **数值**：`CONFIG_LOG_BUFFER_SIZE=1024`。
-    
-- **字符串**：`CONFIG_APPLICATION_INIT_PRIO=50`。
-    
-- **注释**：使用 `#` 开头。
-    
-
-> **架构师提示**：`prj.conf` 里的配置会覆盖硬件板卡默认的配置。
+`prj.conf` 里的配置会覆盖板卡默认配置。
 
 ---
 
-## ⌨️ 3. `menuconfig` 与 `guiconfig` 的使用
+## 三、prj.conf 写法
 
-不需要死记硬背几千个配置项！Zephyr 提供了强大的图形化工具。
+```ini
+# 启用功能
+CONFIG_GPIO=y
+CONFIG_LOG=y
+CONFIG_SHELL=y
 
-- **执行命令**：
-    
-    Bash
-    
-    ```
-    west build -t menuconfig
-    ```
-    
-    (如果你在 WSL 且支持图形界面，`west build -t guiconfig` 会更直观)。
-    
-- **功能**：
-    
-    - **搜索**：按下 `/` 键，输入 `LOG` 就能找到所有和日志相关的配置。
-        
-    - **层级查看**：你可以清晰看到“内核服务 -> 日志选项 -> 异步打印”这样的层级关系。
-        
-    - **实时保存**：在里面修改后保存，它会生成一个临时的 `.config` 文件用于本次编译。
-        
+# 禁用功能
+CONFIG_LOG=n
 
----
+# 设置数值
+CONFIG_LOG_BUFFER_SIZE=1024
+CONFIG_SYS_CLOCK_TICKS_PER_SEC=1000
+```
 
-## 🧬 4. 配置片段 (Config Fragments)
+**逆向推导法**（不需要死记）：
 
-在实际的大型项目中，我们往往需要针对不同的场景（比如“调试版”和“生产版”）使用不同的配置。这时就要用到**配置片段**。
-
-- **做法**：创建一个新的文件，例如 `debug.conf`，里面写上开启调试功能的代码。
-    
-- **使用**：
-    
-    Bash
-    
-    ```
-    west build -b qemu_cortex_m3 -- -DCONF_FILE="prj.conf;debug.conf"
-    ```
-    
-    这样，Zephyr 会先读取 `prj.conf`，然后再用 `debug.conf` 里的内容进行覆盖。这就像是给你的配置系统打“补丁”。
-    
+| 代码里用到 | prj.conf 需要加 |
+|-----------|----------------|
+| `gpio_xxx()` | `CONFIG_GPIO=y` |
+| `printk()` | `CONFIG_PRINTK=y` |
+| `uart_xxx()` | `CONFIG_UART=y` |
+| `i2c_xxx()` | `CONFIG_I2C=y` |
+| `LOG_INF()` | `CONFIG_LOG=y` |
 
 ---
 
-## 🛠️ 今日实战任务
+## 四、menuconfig：图形化查找 CONFIG
 
-我们来亲手实践“禁用/启用”内核功能：
+不需要背配置项名称，用搜索：
 
-### 任务 A：禁用日志系统
+```bash
+west build -t menuconfig
+```
 
-1. 打开你的 `prj.conf`。
-    
-2. 将 `CONFIG_LOG=y` 改为 `CONFIG_LOG=n`（如果没有这一行，手动添加）。
-    
-3. 重新编译运行。
-    
-4. **观察**：你会发现原本整齐的 `[00:00:00.xxx] <inf> main...` 日志全部消失了，只有 `printk` 的输出还在。
-    
+打开后按 `/` 输入关键词搜索（如 `GPIO`），能看到完整名称、当前值、依赖关系。
 
-### 任务 B：练习使用 `menuconfig`
-
-1. 输入 `west build -t menuconfig`。
-    
-2. 寻找 `General Kernel Options` -> `Main stack size`。
-    
-3. 尝试把 `1024` 改成 `2048`。
-    
-4. 保存并退出，观察编译日志是否提示配置已更新。
-    
+修改后保存会生成临时 `.config`，下次编译生效。
 
 ---
 
-**按照正常学习顺序：**
+## 五、配置片段（多环境管理）
 
-当你掌握了配置系统，你就拿到了 Zephyr 的“上帝模式”钥匙。
+项目可以有多个 conf 文件，按场景叠加：
 
-**下一站建议：**
+```bash
+# 调试版：基础配置 + 调试配置
+west build -b <board> -- -DCONF_FILE="prj.conf;debug.conf"
+```
 
-既然你学会了如何开启内核功能，我们要不要去开启一个最常用的功能——**Shell（命令行界面）**？
+`debug.conf` 里的配置会覆盖 `prj.conf` 里相同的项，相当于打"补丁"。
 
-开启它之后，你可以直接在 QEMU 终端里输入命令，查看内存、查看线程、甚至调用 C 函数。
+---
 
-**你想试试如何通过修改 Kconfig 来召唤这个强大的内置 Shell 吗？**
+## 六、验证配置是否真的生效
+
+编译后查看最终配置结果：
+
+```bash
+# 搜索某个 CONFIG 的最终值
+grep CONFIG_LOG build/zephyr/.config
+```
+
+如果你在 `prj.conf` 写了 `=y` 但最终显示 `=n`，说明它的依赖项没有满足，需要一并开启。

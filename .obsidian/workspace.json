@@ -183,8 +183,11 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "c7d9c0068573d916",
+  "active": "2a95b958acb08dd4",
   "lastOpenFiles": [
+    "01-Concepts/Zephyr启动与设备初始化.md",
+    "00-Inbox/Docker残稿.md",
+    "04-Resources/RT-Thread外链.md",
     "04-Resources/Obsidian使用指南.md",
     "00-Inbox/知识管理方法论.md",
     "04-Resources/Zephyr学习系统外链.md",
@@ -211,9 +214,6 @@
     "test",
     "_templates",
     "仓库维护手册/三篇汇总.md",
-    "仓库维护手册/运行手册.md",
-    "仓库维护手册/AI增强认知系统（MCP驱动）.md",
-    "仓库维护手册/半自动化认知系统.md",
     "仓库维护手册",
     "未命名.canvas",
     "未命名.base",

@@ -1,31 +1,45 @@
-既然我们已经掌握了 **Kconfig**（控制软件功能的开关），现在就要进入 Zephyr 的另一半灵魂：**设备树 (DeviceTree, 简称 DT)**。
+# DeviceTree
 
-如果说 Kconfig 是在配置“大脑的功能”，那么设备树就是在描述“身体的构造”。在嵌入式开发中，这是实现**软硬件解耦**的神器。
+> 关联概念：[[Overlay]] | [[Kconfig]] | [[Zephyr]] | [[Zephyr编译系统]]
+
+## 一、本质
+
+DeviceTree 是 Zephyr 的**硬件描述语言**，用来告诉内核"这块板子上有什么硬件、怎么连接"。
+
+```
+.dts 文件（硬件描述）
+    ↓ 编译时解析
+devicetree_generated.h（C 语言宏）
+    ↓
+驱动通过 DT_* 宏找到硬件
+```
+
+传统裸机开发换引脚要改 C 代码；Zephyr 中只改 DTS，C 代码不动。
 
 ---
 
-### 1. 设备树的基本语法与结构
+## 二、核心概念
 
-设备树是一种树状数据结构，用来描述硬件（CPU、内存、外设、引脚）。它以 `.dts`（源文件）和 `.dtsi`（包含文件）的形式存在。
+| 概念 | 含义 | 示例 |
+|------|------|------|
+| 节点 (Node) | 一个硬件模块 | `uart0: uart@4000c000 { }` |
+| 属性 (Property) | 硬件参数 | `current-speed = <115200>;` |
+| compatible | 驱动匹配字符串 | `"gpio-leds"` |
+| status | 设备是否启用 | `"okay"` / `"disabled"` |
+| label | 节点的引用名 | `uart0` |
 
-**核心语法要素：**
+---
 
-- **节点 (Nodes)**：代表一个硬件模块（如 `uart0`）。
-    
-- **属性 (Properties)**：描述硬件参数（如波特率、寄存器地址）。
-    
-- **层级 (Hierarchy)**：反映总线结构（如 I2C 总线下挂载的传感器）。
-    
+## 三、DTS 基本语法
 
-Code snippet
-
-```
-/ {
+```dts
+/ {                              /* 根节点 */
     soc {
-        uart0: uart@4000c000 {
-            compatible = "ti,stellaris-uart";
+        uart0: uart@4000c000 {   /* 节点：标签: 名称@地址 */
+            compatible = "ns16550";
             reg = <0x4000c000 0x1000>;
             status = "okay";
+            current-speed = <115200>;
         };
     };
 };
@@ -33,99 +47,59 @@ Code snippet
 
 ---
 
-### 2. 设备树在 Zephyr 中的作用
+## 四、在 C 代码中访问设备树
 
-在传统单片机开发（如裸机 STM32）中，如果你换了一个引脚接串口，你得去修改 C 代码里的宏定义。
-
-而在 Zephyr 中：
-
-1. **描述硬件**：`.dts` 文件告诉内核硬件长什么样。
-    
-2. **生成宏**：编译时，Zephyr 会读取设备树并生成一大堆以 `DT_` 开头的 C 宏。
-    
-3. **驱动绑定**：驱动程序通过 `compatible` 属性找到它要控制的硬件。
-    
-
-**结论：** C 代码通过宏来访问设备树，从而实现了“一套代码跑在不同板子上”。
-
----
-
-### 3. 设备树覆盖 (Overlay) 的使用
-
-你不需要修改 Zephyr 内置的板级 `.dts` 文件（那是系统级的）。如果你想改变某个引脚或关闭某个外设，你应该使用 **Overlay 文件**。
-
-- **文件名**：通常命名为 `app.overlay` 或 `<board_name>.overlay`。
-    
-- **作用**：它会像“贴纸”一样覆盖在原始设备树上，修改或增加节点。
-    
-
----
-
-### 4. 练习：编写简单的 Overlay
-
-假设我们在 QEMU 中运行，想临时**禁用**串口0（UART0），看程序会发生什么。
-
-**操作步骤：**
-
-1. 在你的项目根目录下（与 `prj.conf` 同级）新建一个文件：`app.overlay`。
-    
-2. 输入以下内容：
-    
-    Code snippet
-    
-    ```
-    &uart0 {
-        status = "disabled";
-    };
-    ```
-    
-3. **重新编译**：`west build -p always -b qemu_cortex_m3`。
-    
-
-**观察结果：**
-
-你会发现 QEMU 启动后，终端**一片漆黑**。因为你通过设备树从“物理层面”关掉了输出窗口。
-
----
-
-### 5. 设备树与驱动的关系：`DEVICE_DT_GET`
-
-在 C 代码中，我们如何获取设备树描述的硬件？
-
-C
-
-```
+```c
 #include <zephyr/device.h>
 #include <zephyr/drivers/uart.h>
 
-// 1. 从设备树获取标签为 uart0 的设备节点
+/* 从设备树获取 uart0 节点 */
 #define UART0_NODE DT_NODELABEL(uart0)
 
 int main(void) {
-    // 2. 获取对应的设备结构体指针
     const struct device *dev = DEVICE_DT_GET(UART0_NODE);
 
     if (!device_is_ready(dev)) {
-        // 驱动初始化失败
         return -1;
     }
-    // 3. 现在你可以调用 UART 驱动接口了
+    /* 现在可以调用 UART 驱动接口 */
 }
 ```
 
+常用 DT 宏：
+
+| 宏 | 用途 |
+|----|------|
+| `DT_NODELABEL(label)` | 通过标签获取节点 |
+| `DEVICE_DT_GET(node)` | 获取设备结构体指针 |
+| `DT_ALIAS(alias)` | 通过别名获取节点 |
+| `DT_PROP(node, prop)` | 读取节点属性值 |
+
 ---
 
-### 📝 按照计划：今日总结
+## 五、文件层级
 
-1. **Kconfig** 控制**代码**编不编译。
-    
-2. **DeviceTree** 控制**代码**去哪里找硬件。
-    
-3. **Overlay** 是你在不动内核源码的情况下，修改硬件定义的唯一合法手段。
-    
+| 文件 | 来源 | 作用 |
+|------|------|------|
+| `board.dts` | Zephyr 官方 | 板子的基础硬件定义 |
+| `soc.dtsi` | Zephyr 官方 | 芯片级定义（被 board.dts 包含） |
+| `app.overlay` | 你的项目 | 应用级修改，叠加在 board.dts 上 |
+| `zephyr.dts` | 编译生成 | 三者合并后的最终设备树 |
 
-**下一步任务建议：**
+**永远不要修改官方的 board.dts，用 Overlay 代替。** 详见 [[Overlay]]。
 
-既然你学会了 Overlay，我们要不要尝试在设备树里定义一个**虚拟的 LED**（即使 QEMU 看不到灯亮），并在 C 代码里尝试去控制它的电平？这将打通你从“纯软件”到“底层驱动”的最后一公里。
+---
 
-**你想试试看在 Overlay 里“变”出一个 LED 来吗？**
+## 六、验证设备树合并结果
+
+编译后查看最终合并的设备树：
+
+```bash
+# 合并后的完整设备树
+build/zephyr/zephyr.dts
+
+# 生成的 C 语言宏
+build/zephyr/include/generated/devicetree_generated.h
+```
+
+在 `zephyr.dts` 里搜索 `gpio` 可以确认控制器的真实标签名（`gpio0` 还是 `gpioa`），这是写 Overlay 前必须做的第一步。
