@@ -1,6 +1,7 @@
 # Thread（线程）
 
 > 关联概念：[[Zephyr]] | [[Zephyr开发流程]]
+> 最后更新：Day11
 
 ## 一、线程的本质定义
 
@@ -21,104 +22,101 @@
 
 ---
 
-## 二、线程的基本结构
+## 二、线程状态
 
-每个线程包含：
+```
+Ready（就绪）   → 准备好，等内核分配 CPU
+Running（运行） → 正在占用 CPU
+Waiting（等待） → 在等事件（sleep / 信号量 / mutex）
+Terminated      → 执行完毕
+```
 
-| 组件 | 作用 |
-|------|------|
-| 程序计数器 (PC) | 记录下一条要执行的指令地址 |
-| CPU 寄存器 | 线程切换时保存和恢复 |
-| 独立栈 (Stack) | 函数调用、局部变量、返回地址 |
-| 线程状态 | Running / Ready / Blocked / Terminated |
+`k_msleep` 和 `k_sem_take` 都会触发 Running → Waiting 的状态切换，主动交出 CPU。
 
 ---
 
-## 三、RTOS 中的线程（Task）
+## 三、RTOS 调度原理
 
-在 RTOS 中线程又称 **Task**，设计目标不是吞吐量，而是：
+**CPU 永远不停。** 所有线程都在 sleep 时，内核运行空闲线程（Idle Thread），执行 `WFI` 进入低功耗等待。
 
-> **确定性（Determinism）** — 事件发生后，系统必须在确定时间内响应
+**内核是事件驱动的，不轮询。** 只在两个瞬间工作：
+- 有线程调用阻塞函数（sleep / take）时 → 切换出去
+- 有事件发生（时间到 / give）时 → 切换回来
 
-RTOS 线程用线程控制块（TCB）管理：
-```
-TCB {
-    stack_pointer
-    priority
-    state
-    delay_ticks
-}
-```
+**上下文切换：** 内核保存当前线程的所有寄存器状态到堆栈，恢复时从断点继续，不重头跑。
 
-### RTOS 线程状态
-```
-Running  → 正在占用 CPU
-Ready    → 等待 CPU
-Blocked  → 等待事件（信号量、队列消息）
-Suspended → 被挂起
-```
+**优先级规则：**
+- 数字越小优先级越高
+- 负数 = 协作式（不会被抢占）
+- 正数 = 抢占式（高优先级线程就绪时立即抢占）
+- **没有 `k_sleep` 的高优先级死循环会饿死低优先级线程**
 
-### 调度策略
+---
 
-**优先级抢占调度**（最常见）：
-```
-高优先级任务 Ready → 立即抢占当前运行任务
-```
+## 四、Zephyr 线程 API
 
-**时间片调度**（同优先级之间）：
-```
-TaskA(priority 2) → TaskB(priority 2) → TaskA → TaskB
+### 静态定义线程（推荐）
+```c
+K_THREAD_DEFINE(
+    worker_tid,       // 线程 ID
+    512,              // 栈大小（字节）
+    worker_thread,    // 入口函数
+    NULL, NULL, NULL, // 参数 p1/p2/p3
+    5,                // 优先级
+    0,                // 选项
+    0                 // 延迟启动（ms）
+);
 ```
 
 ---
 
-## 四、RTOS vs 裸机
+## 五、线程间通信机制
+
+### 信号量（Semaphore）— 发通知
+
+**用途：** A 通知 B "可以干了"，解决执行顺序问题。
 
 ```c
-// 裸机：顺序执行，无法保证实时性
-while(1) {
-    read_sensor();   // 如果这个卡住了
-    control_motor(); // 这个就延迟了
-}
+K_SEM_DEFINE(my_sem, 0, 1);  // 初始值0，最大值1
 
-// RTOS：并发执行，优先级控制响应时间
-// 传感器线程 priority 3
-// 电机控制线程 priority 5  ← 高优先级，始终及时响应
-// 日志输出线程 priority 1
-```
+// 线程 B：等待
+k_sem_take(&my_sem, K_FOREVER);
 
----
-
-## 五、Zephyr 中的线程 API
-
-### 创建线程（宏方式）
-```c
-K_THREAD_DEFINE(worker_tid,        // 线程 ID 变量名
-                512,               // 栈大小（字节）
-                worker_thread,     // 线程函数
-                NULL, NULL, NULL,  // 参数
-                5,                 // 优先级（数字越小优先级越高）
-                0,                 // 选项
-                0);                // 延迟启动（ms）
-```
-
-### 信号量同步
-```c
-K_SEM_DEFINE(my_sem, 0, 1);   // 初始值0，最大值1
-
-// 线程 A：等待信号
-void worker(void *a, void *b, void *c) {
-    while (1) {
-        k_sem_take(&my_sem, K_FOREVER);  // 阻塞等待
-        do_work();
-    }
-}
-
-// 线程 B（或主线程）：触发
+// 线程 A：触发
 k_sem_give(&my_sem);
 ```
 
-### 消息队列
+**底层机制：** 信号量结构体内含等待队列 `wait_q`。`take` 没拿到时把当前线程加入队列并挂起；`give` 时内核从队列里取出线程唤醒。内核不轮询，完全事件驱动。
+
+**初始值为 0 的含义：** B 必须等 A 先 give，否则开机就乱跑。
+
+### 互斥锁（Mutex）— 保护资源
+
+**用途：** 确保同一时间只有一个线程访问共享资源（硬件外设、全局变量）。
+
+```c
+K_MUTEX_DEFINE(my_mutex);
+
+k_mutex_lock(&my_mutex, K_FOREVER);
+// 临界区：操作共享资源
+k_mutex_unlock(&my_mutex);
+```
+
+**与信号量的区别：**
+
+| | 信号量 | 互斥锁 |
+|--|--------|--------|
+| 所有权 | 无（A give，B take） | 有（谁锁谁解） |
+| 用途 | 发通知、协调顺序 | 保护共享资源 |
+| ISR 可用 | 可（give） | 不可 |
+| 优先级继承 | 无 | 有（防优先级翻转） |
+
+**不能在中断（ISR）里用 Mutex**，ISR 不能阻塞等待。
+
+### 消息队列（Message Queue）— 传数据
+
+**用途：** 线程间既通知又传递数据。
+
 ```c
 K_MSGQ_DEFINE(my_queue, sizeof(int), 10, 4);
 
@@ -131,45 +129,8 @@ int received;
 k_msgq_get(&my_queue, &received, K_FOREVER);
 ```
 
-### 互斥锁
-```c
-K_MUTEX_DEFINE(my_mutex);
-
-k_mutex_lock(&my_mutex, K_FOREVER);
-// 临界区操作
-k_mutex_unlock(&my_mutex);
-```
-
 ---
 
-## 六、线程通信机制对比
+## 六、学习中产生的问题
 
-| 机制 | 用途 | Zephyr API |
-|------|------|-----------|
-| Semaphore | 事件同步 | `k_sem` |
-| Mutex | 互斥访问共享资源 | `k_mutex` |
-| Message Queue | 线程间传递数据 | `k_msgq` |
-| Event Flag | 多事件组合等待 | `k_event` |
-
----
-
-## 七、中断与线程的配合模式
-
-不要在中断里做复杂逻辑，用"中断发信号，线程处理"模式：
-```
-UART 中断触发
-    ↓
-k_sem_give() 或 k_msgq_put()（轻量操作，在中断里安全）
-    ↓
-通信线程从阻塞中唤醒
-    ↓
-处理复杂逻辑
-```
-
----
-
-## 八、注意事项
-
-- 每个 `while(1)` 必须有 `k_sleep()` 或阻塞操作，否则线程独占 CPU，其他线程无法运行
-- RTOS 线程栈大小需要手动配置，嵌入式中 RAM 有限，根据实际需求设置
-- 竞态条件（Race Condition）：多线程访问共享变量时必须用 Mutex 保护
+→ [[05-Questions/线程调度相关问题集]]

@@ -1,1 +1,0 @@
-[RT-Thread API参考手册: RT-Thread 简介](https://www.rt-thread.org/document/api/index.html)
