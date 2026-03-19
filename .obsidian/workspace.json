@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Zephyr/30_day/10/1_笔记.md",
-                "mode": "preview",
+                "file": "00-Inbox/旧稿-CMake-review.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1_笔记"
+              "title": "旧稿-CMake-review"
             }
           }
         ]
@@ -185,41 +185,41 @@
   },
   "active": "ba210151dae35ae4",
   "lastOpenFiles": [
+    "00-Inbox/旧稿-开发流程2.md",
+    "00-Inbox/旧稿-开发流程1.md",
+    "00-Inbox/旧稿-RTOS-Thread.md",
+    "README.md",
+    "未命名/优化这个知识工程系统(Kimi).md",
+    "未命名/一套适用于任何学科的知识工程系统(2).md",
+    "未命名/一个可维护可演进的知识系统(1).md",
+    "未命名 2.md",
+    "未命名.md",
+    "未命名 1.md",
+    "Zephyr/未命名.md",
+    "未命名/Obsidian + Git 知识工程架构指南(deepseek).md",
+    "未命名/Obsidian+Git知识工程化系统文档(豆包).md",
+    "未命名/未命名 3.md",
+    "未命名",
+    "未命名/可直接落地、可长期运行的最终版本.md",
+    "未命名.base",
+    "Zephyr/30_day/10/1_笔记.md",
+    "新建 文本文档.txt",
     "Zephyr/30_day/10/3_笔记.md",
     "Zephyr/30_day/10/5_笔记.md",
     "Zephyr/Zephry概念/驱动程序与硬件之间的那层窗户纸到底是怎么捅破的？.md",
     "Zephyr/Zephry概念/调用驱动函数硬件启动过程.md",
     "Zephyr/Zephry概念/3.md",
     "Zephyr/30_day/10/9_笔记.md",
-    "Zephyr/30_day/10/1_笔记.md",
     "Zephyr/30_day/10/10_笔记.md",
     "Zephyr/30_day/20/11_笔记.md",
     "Zephyr/30_day/20/12_笔记.md",
     "Zephyr/30_day/30天Zephyr工程师训练计划.md",
-    "Zephyr/30_day/基于F103改写.md",
-    "Zephyr/30_day/30/30_笔记.md",
-    "Zephyr/30_day/30/29_笔记.md",
-    "Zephyr/30_day/30/28_笔记.md",
-    "Zephyr/30_day/30/27_笔记.md",
-    "Zephyr/30_day/30/26_笔记.md",
-    "Zephyr/30_day/30/25_笔记.md",
-    "Zephyr/30_day/30/24_笔记.md",
-    "Zephyr/30_day/30/23_笔记.md",
-    "Zephyr/30_day/30/22_笔记.md",
-    "Zephyr/30_day/30/21_笔记.md",
-    "Zephyr/30_day/10/7_笔记.md",
-    "Zephyr/30_day/10/8_笔记.md",
-    "Zephyr/30_day/10/4_笔记.md",
-    "Zephyr/30_day/10/2_笔记.md",
     "Zephyr/30_day/10",
     "Zephyr/30_day/20/10",
     "Zephyr/30_day/30",
     "Zephyr/30_day/20",
     "Zephyr/工具概念/Overlay",
     "Zephyr/Zephry概念",
-    "Zephyr/工具概念",
-    "Zephyr/++",
-    "Zephyr/新建文件夹",
-    "Zephyr/+"
+    "Zephyr/工具概念"
   ]
 }
