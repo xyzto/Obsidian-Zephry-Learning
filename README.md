@@ -88,13 +88,13 @@ STM32（规划中）→ [[03-Areas/STM32知识图谱]]
 
 > 新增 Question 后不需要更新这张表。Questions 本身就是导航。
 
-**_维护**
+**_manual**
 
 | 文件 | 内容 |
 |------|------|
-| [[_维护/知识库维护手册\|维护手册]] | 核心方法论、流程规则、模板、禁忌 |
-| [[_维护/Obsidian插件配置\|插件配置]] | Templater / QuickAdd 配置，换电脑时参考 |
-| [[_维护/Zephyr-Git仓库使用说明\|Git 仓库方案]] | workspace 与 learning 仓库分离方案 |
-| [[_维护/AI协作提示词\|AI 协作提示词]] | 开启新对话时粘贴给 AI，快速上手管理仓库 |
+| [[_manual/知识库维护手册\|维护手册]] | 核心方法论、流程规则、模板、禁忌 |
+| [[_manual/Obsidian插件配置\|插件配置]] | Templater / QuickAdd 配置，换电脑时参考 |
+| [[_manual/Zephyr-Git仓库使用说明\|Git 仓库方案]] | workspace 与 learning 仓库分离方案 |
+| [[_manual/AI协作提示词\|AI 协作提示词]] | 开启新对话时粘贴给 AI，快速上手管理仓库 |
 
 </details>
