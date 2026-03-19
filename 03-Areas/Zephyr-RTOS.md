@@ -15,7 +15,8 @@ Zephyr
 
 ## 当前进度
 
-→ [[02-Projects/30day-Zephyr/进度]]
+→ [[02-Projects/F103ZE/进度]]（真实硬件学习计划）
+→ [[02-Projects/QEMU/进度]]（仿真实验）
 
 ## 外部资源
 
