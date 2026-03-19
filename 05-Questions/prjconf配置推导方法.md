@@ -1,132 +1,63 @@
-这是一个非常核心的问题：**当你面对一个空白项目时，第一行代码该往哪写？你怎么知道该加哪些配置？**
+# 如何从零推导 prj.conf 和 app.overlay？
 
-专家不是靠背诵，而是靠一套**“逆向推导法”**。
+> 来源：Zephyr 30天训练计划实践
+> 状态：#已验证
+> 关联概念：[[Kconfig]] | [[Overlay]] | [[DeviceTree]] | [[Zephyr开发流程]]
 
----
+## 当前理解
 
-### 1. 怎么写 `prj.conf`？（根据功能推导）
+面对空白项目，不需要死记配置项，用"需求反推"的方式：代码里用了什么 API，就开什么 CONFIG；外设接在哪里，就在 overlay 里描述哪里。
 
-在 Zephyr 中，所有的功能（驱动、协议栈、内核特性）默认都是**关闭**的。你需要通过 `prj.conf` 像点菜一样把它们开启。
+## prj.conf 推导法
 
-#### 方法 A：需求推导法（最快）
+**代码 → 配置** 的逆向推导：
 
-问自己：我的代码里用到了什么 API？
+| 代码里用到 | prj.conf 需要加 |
+|-----------|----------------|
+| `gpio_xxx()` | `CONFIG_GPIO=y` |
+| `printk()` | `CONFIG_PRINTK=y` |
+| `uart_xxx()` | `CONFIG_UART=y` |
+| `i2c_xxx()` | `CONFIG_I2C=y` |
+| `LOG_INF()` | `CONFIG_LOG=y` |
+| 浮点运算 | `CONFIG_FPU=y` |
 
-- 用到了 `gpio_...` 函数？ $\rightarrow$ 必须加 `CONFIG_GPIO=y`。
-    
-- 用到了 `printk` 打印？ $\rightarrow$ 必须加 `CONFIG_PRINTK=y`。
-    
-- 用到了浮点数运算（$3.14 \times 2$）？ $\rightarrow$ 必须加 `CONFIG_FPU=y`。
-    
-- 用到了多线程监控工具？ $\rightarrow$ 必须加 `CONFIG_THREAD_MONITOR=y`。
-    
+不确定配置名时，两种查法：
+1. `west build -t menuconfig` → 按 `/` 搜索关键词
+2. [Zephyr Kconfig 搜索页](https://docs.zephyrproject.org/latest/kconfig.html)
 
-#### 方法 B：查找官方案例（最稳）
+新功能最快的方式：去 `zephyr/samples/` 找类似例子，直接复制它的 `prj.conf`。
 
-如果你要用一个新功能（比如蓝牙），直接去 Zephyr 源码目录查：
+## app.overlay 推导法
 
-1. 进入 `zephyr/samples` 文件夹。
-    
-2. 找到类似的例子（如 `samples/bluetooth/peripheral`）。
-    
-3. **直接打开它的 `prj.conf`**，看它开启了哪些配置，直接复制过来。
-    
+三步走：
 
----
-
-### 2. 怎么写 `app.overlay`？（根据硬件连接推导）
-
-Overlay 的核心逻辑只有一句话：**“我的外设接在芯片的哪个控制器、哪根引脚上？”**
-
-#### 步骤流程：
-
-1. **确定控制器**：查你的开发板 Dts 底稿。如果控制器的真名叫 `gpio0`，你的 Overlay 就写 `&gpio0`。
-    
-2. **确定引脚**：看电路图。接在第 7 脚，就写 `7`。
-    
-3. **寻找模板**：去 `zephyr/samples` 找对应的硬件例子。
-    
-    - 找 `samples/basic/blinky` 看 LED 怎么写。
-        
-    - 找 `samples/basic/button` 看按键怎么写。
-        
-
----
-
-### 3. 实战演示：从零构建今日的“多线程闪灯”项目
-
-假设你现在面前有三个空文件，你应该这样操作：
-
-#### 第一步：写 `prj.conf`
-
-我想闪灯（GPIO），我想看输出（PRINTK）。
-
-Makefile
-
-```
-# 开启 GPIO 驱动支持
-CONFIG_GPIO=y
-# 开启串口打印支持
-CONFIG_PRINTK=y
-```
-
-#### 第二步：写 `app.overlay`
-
-我的灯接在第一个 GPIO 控制器的第 7 号引脚，高电平点亮。
-
-Code snippet
-
-```
+1. **查控制器真名**：先 `west build`，打开 `build/zephyr/zephyr.dts`，搜索 `gpio`，确认叫 `gpio0` 还是 `gpioa`
+2. **套模板**：
+```dts
+#include <zephyr/dt-bindings/gpio/gpio.h>
 / {
-    aliases {
-        led-status = &my_led; // 给 C 代码用的外号
-    };
-
+    aliases { led-status = &my_led; };
     leds {
         compatible = "gpio-leds";
         my_led: led_0 {
-            gpios = <&gpio0 7 GPIO_ACTIVE_HIGH>; // 物理指向
+            gpios = <&gpio0 7 GPIO_ACTIVE_HIGH>;
         };
     };
 };
 ```
+3. **验证合并**：编译后再看 `build/zephyr/zephyr.dts` 确认 alias 正确
 
-#### 第三步：写 `main.c`
+参考样例：
+- LED 写法：`zephyr/samples/basic/blinky`
+- 按键写法：`zephyr/samples/basic/button`
 
-利用刚才定义的 `led-status` 别名来写多线程代码。
+## 结论
 
----
+```
+不知道开什么 CONFIG → menuconfig 搜索 或 抄 samples
+不知道引脚怎么填  → 先看 zephyr.dts 确认控制器真名
+编译后不生效      → west build -p always 清理缓存重编
+```
 
-### 4. 我怎么知道有哪些 `CONFIG_XXX` 可以用？
-
-这是最让新手头疼的。专家通常用这两个工具：
-
-1. **`menuconfig` (最强工具)**：
-    
-    在你的项目目录下运行：
-    
-    Bash
-    
-    ```
-    west build -t menuconfig
-    ```
-    
-    它会弹出一个类似 BIOS 的蓝色界面。在这里你可以按 `/` 键搜索关键词（比如搜索 "GPIO"），它会告诉你对应的 `CONFIG_` 名称是什么，以及它的依赖项。
-    
-2. **官方 Kconfig 搜索网页**：
-    
-    Zephyr 官网有一个 [Kconfig Search](https://docs.zephyrproject.org/latest/kconfig.html) 页面，输入功能关键词就能找到配置名。
-    
-
----
-
-### 💡 今天的“武功秘籍”总结：
-
-- **遇到新功能**：去 `samples` 文件夹里“抄” `prj.conf` 和 `app.overlay`。
-    
-- **遇到奇怪报错**：用 `west build -t menuconfig` 检查配置是否真的开启了。
-    
-- **不知道引脚怎么填**：看 `build/zephyr/zephyr.dts` 确认控制器名字。
-    
-
-**现在，你尝试从空白文件开始，把这两份配置填进去编译一下？如果报错，那说明我们正好抓到了一个“配置依赖”的典型案例！**
+## 关联
+[[Kconfig]] | [[Overlay]] | [[West]] | [[Zephyr开发流程]]

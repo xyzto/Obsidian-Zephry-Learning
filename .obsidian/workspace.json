@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04-Resources/Zephyr-Git仓库使用说明.md",
-                "mode": "source",
+                "file": "04-Resources/外部链接汇总.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Zephyr-Git仓库使用说明"
+              "title": "外部链接汇总"
             }
           }
         ]
@@ -155,13 +155,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "04-Resources/Zephyr-Git仓库使用说明.md",
+                "file": "04-Resources/外部链接汇总.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Zephyr-Git仓库使用说明 的大纲"
+              "title": "外部链接汇总 的大纲"
             }
           }
         ],
@@ -183,37 +183,37 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "2a95b958acb08dd4",
+  "active": "c7d9c0068573d916",
   "lastOpenFiles": [
-    "01-Concepts/Zephyr启动与设备初始化.md",
-    "00-Inbox/Docker残稿.md",
-    "04-Resources/RT-Thread外链.md",
-    "04-Resources/Obsidian使用指南.md",
-    "00-Inbox/知识管理方法论.md",
-    "04-Resources/Zephyr学习系统外链.md",
-    "04-Resources/Zephyr-Git仓库使用说明.md",
+    "00-Inbox/学习正则表达式.md",
     "04-Resources/硬件进阶路线.md",
+    "04-Resources/外部链接汇总.md",
     "04-Resources/开源项目推荐.md",
-    "_维护/知识库维护手册.md",
-    "_维护/知识库初始化SOP.md",
-    "_维护/知识管理方法论.md",
+    "04-Resources/Obsidian使用指南.md",
+    "04-Resources/RT-Thread外链.md",
+    "04-Resources/Zephyr-Git仓库使用说明.md",
+    "04-Resources/Zephyr学习系统外链.md",
+    "05-Questions/驱动程序如何与硬件通信.md",
+    "05-Questions/prjconf配置推导方法.md",
+    "01-Concepts/Zephyr编译系统.md",
+    "01-Concepts/CMake.md",
+    "01-Concepts/West.md",
+    "01-Concepts/Thread.md",
+    "01-Concepts/Overlay.md",
+    "01-Concepts/QEMU.md",
+    "01-Concepts/Kconfig.md",
+    "01-Concepts/DeviceTree.md",
     "_维护/Obsidian使用指南.md",
+    "_维护/知识库维护手册.md",
     "_维护/Obsidian插件配置.md",
-    "_维护",
-    "04-Resources/知识管理方法论.md",
-    "04-Resources/知识库初始化SOP.md",
-    "04-Resources/Obsidian插件配置.md",
-    "01-Concepts/调用驱动函数硬件启动.md",
-    "Zephyr/Zephry概念/开发是个“伪命题”？.md",
     "README.md",
-    "01-Concepts/RT-Thread.md",
-    "05-Questions/test.md",
-    "02-Projects/test.md",
-    "01-Concepts/test.md",
-    "test/test.md",
+    "Zephyr/Zephry概念/开发是个“伪命题”？.md",
+    "02-Projects/30day-Zephyr/30天Zephyr工程师训练计划.md",
+    "02-Projects/30day-Zephyr/基于F103改写.md",
+    "02-Projects/30day-Zephyr/日记/Day03.md",
+    "_维护",
     "test",
     "_templates",
-    "仓库维护手册/三篇汇总.md",
     "仓库维护手册",
     "未命名.canvas",
     "未命名.base",
