@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_manual/study-context.md",
+                "file": "_manual/structure.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "study-context"
+              "title": "structure"
             }
           }
         ],
@@ -184,13 +184,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_manual/study-context.md",
+                "file": "_manual/structure.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "study-context 的大纲"
+              "title": "structure 的大纲"
             }
           }
         ],
@@ -214,19 +214,23 @@
   },
   "active": "3072a225542aff41",
   "lastOpenFiles": [
-    "02-Projects/QEMU/lab/Exp02-Thread-Basics.md",
-    "02-Projects/F103ZE/progress.md",
-    "_manual/vault-prompt.md",
-    "_manual/study-context.md",
-    "01-Concepts/Thread.md",
-    "_manual/study-prompt.md",
-    "_manual/new-project-guide.md",
-    "_manual/obsidian-config.md",
-    "_manual/handbook.md",
-    "_manual/git-guide.md",
     "README.md",
+    "_manual/vault-root.md",
+    "_manual/session-log.md.95d6d3133622e875c71b9a811d47bca2.tmp",
+    "_manual/vault-prompt.md",
+    "_manual/study-prompt.md",
+    "_manual/study-context.md",
     "_manual/structure.md",
     "_manual/format-rules.md",
+    "_manual/git-guide.md",
+    "_manual/handbook.md",
+    "_manual/handoff.md",
+    "_manual/new-project-guide.md",
+    "_manual/session-log.md",
+    "_manual/obsidian-config.md",
+    "02-Projects/QEMU/lab/Exp02-Thread-Basics.md",
+    "02-Projects/F103ZE/progress.md",
+    "01-Concepts/Thread.md",
     "_templates/Concept.md",
     "_templates/Inbox.md",
     "_manual/learning-prompt.md",
@@ -236,13 +240,9 @@
     "02-Projects/QEMU/env.md",
     "02-Projects/QEMU/plan.md",
     "00-Inbox/从 HAL 库思维切换到 RTOS 思维.md",
-    "_manual/学习辅助提示词.md",
     "README.md.7e8bf845039c94855173cac33dc7702a.tmp",
     "02-Projects/QEMU/lab",
     "02-Projects/F103ZE/lab",
-    "02-Projects/F103ZE/env.md",
-    "02-Projects/F103ZE/plan.md",
-    "02-Projects/QEMU/实验/Hello World.md",
     "assets/Pasted image 20260320090403.png",
     "assets",
     "_manual/Obsidian插件配置.md.5edbae4de67cc05f9cb5c7c53d10d910.tmp",
@@ -250,7 +250,6 @@
     "_manual/AI协作提示词.md.eadfa06076357138b449ece06d8936a2.tmp",
     "02-Projects/项目名",
     "02-Projects/运行脚本自动建好目录和四个文件.txt",
-    "02-Projects/新建 文本文档.txt",
     "未命名.canvas"
   ]
 }

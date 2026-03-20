@@ -2,6 +2,7 @@
 
 > 用途：新增开发板或实验平台时，保证每个项目文件夹结构一致
 > 相关脚本：`02-Projects/new-project.ps1`
+> 根路径见：`_manual/vault-root.md`
 
 ---
 
@@ -24,10 +25,11 @@
 
 ## 方法一：PowerShell 脚本（推荐）
 
-进入 `02-Projects/` 目录后运行：
+根路径从 `_manual\vault-root.md` 读取，无需手动修改脚本：
 
 ```powershell
-cd E:\OB-Vaults\Zephry\02-Projects
+# 读取根路径（脚本内部处理，无需手动填写）
+cd <VAULT_ROOT>\02-Projects
 .\new-project.ps1 <项目名>
 ```
 
@@ -41,11 +43,13 @@ cd E:\OB-Vaults\Zephry\02-Projects
 
 脚本会自动建好目录和四个文件，内容留空待填。
 
+> ⚠ 迁移仓库后只需更新 `_manual\vault-root.md`，脚本本身不含硬编码路径。
+
 ---
 
 ## 方法二：让 AI 来建
 
-新对话里粘贴 [[_manual/ai-prompt]] 后追加：
+新对话里粘贴 `_manual\vault-prompt.md` 后追加：
 
 ```
 我新买了一块 [板子名] 开发板，帮我在 02-Projects/ 下新建一个项目文件夹，
