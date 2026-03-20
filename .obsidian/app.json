@@ -6,5 +6,6 @@
   "userIgnoreFilters": [
     "_templates",
     "_manual"
-  ]
+  ],
+  "promptDelete": false
 }

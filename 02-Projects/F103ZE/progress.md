@@ -1,7 +1,7 @@
-# 30天 Zephyr 训练进度
+# F103ZE 学习进度
 
-> 这是进度的唯一记录位置。README 和 Zephyr-RTOS.md 均指向此文件。
-> 完整计划见：[[02-Projects/F103ZE/学习计划]]
+> 进度唯一记录位置。
+> 完整计划见：[[02-Projects/F103ZE/plan]]
 
 ---
 

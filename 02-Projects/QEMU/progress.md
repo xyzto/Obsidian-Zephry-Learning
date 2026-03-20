@@ -1,6 +1,6 @@
-# 进度 — QEMU 仿真实验
+# QEMU 仿真实验进度
 
-> 完整实验清单见：[[02-Projects/QEMU/学习计划]]
+> 完整实验清单见：[[02-Projects/QEMU/plan]]
 
 ---
 

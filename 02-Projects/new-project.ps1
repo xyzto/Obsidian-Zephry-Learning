@@ -19,11 +19,11 @@ if (Test-Path $base) {
 }
 
 # 建目录
-New-Item -ItemType Directory -Path "$base\实验" -Force | Out-Null
+New-Item -ItemType Directory -Path "$base\lab" -Force | Out-Null
 
-# 学习计划
+# plan.md（学习计划）
 @"
-# 学习计划 — $name
+# Plan — $name
 
 > 目标：
 > 硬件：
@@ -36,13 +36,13 @@ New-Item -ItemType Directory -Path "$base\实验" -Force | Out-Null
 ### 第二阶段：
 
 ### 第三阶段：
-"@ | Out-File "$base\学习计划.md" -Encoding utf8
+"@ | Out-File "$base\plan.md" -Encoding utf8
 
-# 进度
+# progress.md（进度）
 @"
-# 进度 — $name
+# Progress — $name
 
-> 完整计划见：[[02-Projects/$name/学习计划]]
+> 完整计划见：[[02-Projects/$name/plan]]
 
 ## 当前位置：
 
@@ -51,11 +51,11 @@ New-Item -ItemType Directory -Path "$base\实验" -Force | Out-Null
 - [ ]
 
 ## 已完成
-"@ | Out-File "$base\进度.md" -Encoding utf8
+"@ | Out-File "$base\progress.md" -Encoding utf8
 
-# 环境信息
+# env.md（环境信息）
 @"
-# 环境信息 — $name
+# Env — $name
 
 > 板子类型：
 > 芯片：
@@ -116,14 +116,14 @@ west flash
 west build -t ram_report
 west build -t rom_report
 \`\`\`
-"@ | Out-File "$base\环境信息.md" -Encoding utf8
+"@ | Out-File "$base\env.md" -Encoding utf8
 
-# 保留空的实验目录
-New-Item "$base\实验\.gitkeep" -Force | Out-Null
+# 保留空的 lab 目录
+New-Item "$base\lab\.gitkeep" -Force | Out-Null
 
 Write-Host "✅ 项目已创建：$base"
 Write-Host ""
 Write-Host "接下来："
-Write-Host "  1. 打开 $base\环境信息.md，填写引脚表"
-Write-Host "  2. 打开 $base\学习计划.md，写阶段规划"
+Write-Host "  1. 打开 $base\env.md，填写引脚表"
+Write-Host "  2. 打开 $base\plan.md，写阶段规划"
 Write-Host "  3. git add -A && git commit -m `"feat: 新建项目 $name`""
