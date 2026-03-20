@@ -2,7 +2,7 @@
 
 > 日期：2026-03-20
 > 目标板：qemu_cortex_m3
-> 关联 Concept：[[Semaphore]] | [[Thread_States]]
+> 关联 Concept：[[01-Concepts/Semaphore]] | [[01-Concepts/Thread_States]]
 
 ## 目标
 
@@ -107,5 +107,5 @@ A：技术上可以（二值信号量），但信号量没有"优先级继承"�
 
 ## 反哺
 
-→ [[Semaphore]]
-→ [[Thread_States]]
+→ [[01-Concepts/Semaphore]]
+→ [[01-Concepts/Thread_States]]
