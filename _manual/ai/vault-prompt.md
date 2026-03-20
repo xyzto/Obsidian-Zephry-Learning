@@ -72,8 +72,8 @@
 │   │   ├── vault-prompt.md # 仓库管理提示词（本文件）
 │   │   ├── session-log.md  # 会话状态日志
 │   │   ├── handoff.md      # 对话交接文件 ← 上下文接近上限时写入
-│   │   └── study-context.md# 学习辅助完整上下文（给另一个 AI 用）
-│   ├── format-rules.md     # 笔记格式规范（两份提示词共用）
+│   │   └── study-context.md# 学习辅助完整上下文（由 vault AI 维护）
+│   ├── format-rules.md     # 笔记格式规范（唯一真相来源）
 │   ├── handbook.md         # 知识库维护手册
 │   ├── new-project-guide.md
 │   ├── obsidian-config.md
@@ -258,4 +258,13 @@ update(manual):  更新系统文件（vault-prompt / session-log / handoff）
 - 产生的问题链接写 [[05-Questions/问题名]]
 - 反哺链接写 [[01-Concepts/概念名]]
 - 坑的现象/原因/解决前不加 # 标题符号
+```
+
+**刷新 study-context（format-rules.md 有变动后执行）**
+```
+帮我刷新 study-context.md。
+读取 _manual/format-rules.md 的完整内容，
+替换 study-context.md 中 <!-- BEGIN FORMAT RULES --> 到 <!-- END FORMAT RULES -->
+之间的全部内容（保留这两行注释标记本身）。
+其余部分不动。
 ```

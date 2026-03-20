@@ -1,7 +1,11 @@
 # Zephyr 嵌入式知识库
 
-从 STM32 HAL 转向 Zephyr RTOS 的学习记录，目标是找嵌入式工作。
-用 Obsidian 管理笔记，Git 追踪认知变化。
+从 STM32 HAL 转向 Zephyr RTOS 的学习记录
+
+**工作流：**
+- 实验用另一个 AI 辅助（粘贴 `_manual/ai/study-context.md`），负责讲解、调试、生成笔记草稿
+- 笔记落地用 Claude + MCP（粘贴 `_manual/ai/vault-prompt.md`），负责读写文件、维护仓库
+- 格式规范统一在 `_manual/format-rules.md`，两个 AI 共用
 
 ---
 
@@ -60,6 +64,7 @@ _manual/        操作手册、脚本工具、AI 提示词
 | `Zephyr启动与设备初始化.md` | 从上电到 main() 的启动流程 |
 | `Zephyr开发流程.md` | 日常开发的标准操作流程 |
 | `Thread.md` | 线程创建、调度、优先级、信号量 / Mutex / 消息队列 |
+| `Semaphore.md` | 信号量核心机制、二值与计数类型、与 Mutex 的区别 |
 | `QEMU.md` | QEMU 仿真环境配置与使用 |
 
 ---
@@ -119,6 +124,8 @@ _manual/        操作手册、脚本工具、AI 提示词
 | `如何为STM32F103ZE创建自定义Board.md` | 自定义 Board 的完整流程 |
 | `线程调度相关问题集.md` | 优先级 / 时间片 / 协作式调度的疑问 |
 | `驱动程序如何与硬件通信.md` | Zephyr 驱动框架与底层硬件的绑定机制 |
+| `优先级翻转如何发生？.md` | 优先级翻转的触发条件与 Zephyr 的应对机制 |
+| `什么时候该用信号量而不是互斥锁？.md` | 信号量与 Mutex 的使用场景边界 |
 
 ---
 
@@ -143,7 +150,7 @@ _manual/        操作手册、脚本工具、AI 提示词
 
 | 文件 | 用途 |
 |------|------|
-| `format-rules.md` | 笔记格式规范，新建文件时对照 |
+| `format-rules.md` | 笔记格式规范（唯一真相来源），新建文件时对照 |
 | `handbook.md` | 知识库维护原则，仓库整理时参考 |
 | `structure.md` | 目录结构详细说明 |
 | `new-project-guide.md` | 新建项目的操作步骤 |
@@ -156,8 +163,9 @@ _manual/        操作手册、脚本工具、AI 提示词
 | 文件 | 用途 | 使用时机 |
 |------|------|---------|
 | `vault-root.md` | 仓库根路径声明，换电脑只改这一个文件 | AI 启动时自动读取 |
-| `vault-prompt.md` | 仓库管理 AI 的提示词 | 新开对话时粘贴，让 AI 读写文件 |
-| `study-context.md` | 学习辅助 AI 的完整上下文 | 新开对话时粘贴，让 AI 辅助实验 |
+| `vault-prompt.md` | 仓库管理 AI（Claude + MCP）的提示词 | 新开仓库管理对话时粘贴 |
+| `study-context.md` | 学习辅助 AI 的完整上下文（自动维护） | 新开学习对话时粘贴 |
+| `study-prompt.md` | study-context.md 的源文件，不直接使用 | 修改学习流程时编辑，改完执行"刷新 study-context" |
 | `session-log.md` | AI 会话状态日志，记录上次做到哪 | AI 每次对话结束时自动更新 |
 | `handoff.md` | 对话交接文件，上下文到限时写入 | AI 上下文紧张时自动触发 |
 
@@ -190,3 +198,4 @@ _manual/        操作手册、脚本工具、AI 提示词
 | 找到外部好资料 | 链接存进 `04-Resources/外部链接汇总.md` |
 | 开新 AI 对话（仓库管理） | 粘贴 `_manual/ai/vault-prompt.md` 内容 |
 | 开新 AI 对话（学习辅助） | 粘贴 `_manual/ai/study-context.md` 内容 |
+| 修改了 format-rules.md | 告诉仓库 AI "刷新 study-context" |
