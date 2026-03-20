@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "_manual/ai/study-context.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "study-context"
             }
           }
         ],
@@ -184,13 +184,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md",
+                "file": "_manual/ai/study-context.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "README 的大纲"
+              "title": "study-context 的大纲"
             }
           }
         ],
@@ -214,14 +214,16 @@
   },
   "active": "3072a225542aff41",
   "lastOpenFiles": [
-    "脱离 Claude MCP 时的手动工作流.md",
     "_manual/ai/study-prompt.md",
     "_manual/ai/study-context.md",
+    "_manual/ai/session-log.md",
+    "04-Resources/外部链接汇总.md",
+    "04-Resources/进阶方向.md",
+    "脱离 Claude MCP 时的手动工作流.md",
+    "README.md",
     "_manual/ai/vault-prompt.md",
     "_manual/ai/vault-root.md",
-    "_manual/ai/session-log.md",
     "_manual/ai/handoff.md",
-    "README.md",
     "_manual/new-project.ps1",
     "_manual/obsidian-config.md",
     "_manual/new-project-guide.md",
@@ -241,8 +243,6 @@
     "02-Projects/F103ZE/progress.md",
     "01-Concepts/Thread.md",
     "_templates/Concept.md",
-    "_templates/Inbox.md",
-    "_manual/learning-prompt.md",
     "README.md.7e8bf845039c94855173cac33dc7702a.tmp",
     "02-Projects/QEMU/lab",
     "02-Projects/F103ZE/lab",
