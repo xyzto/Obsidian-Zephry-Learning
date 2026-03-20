@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_manual/ai/study-context.md",
-                "mode": "preview",
+                "file": "_manual/ai/study-prompt.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "study-context"
+              "title": "study-prompt"
             }
           }
         ],
@@ -184,13 +184,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_manual/ai/study-context.md",
+                "file": "_manual/ai/study-prompt.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "study-context 的大纲"
+              "title": "study-prompt 的大纲"
             }
           }
         ],
@@ -214,24 +214,24 @@
   },
   "active": "3072a225542aff41",
   "lastOpenFiles": [
-    "_manual/ai/study-prompt.md",
     "_manual/ai/study-context.md",
     "_manual/ai/session-log.md",
+    "_manual/format-rules.md",
+    "_manual/obsidian-config.md",
+    "_manual/structure.md",
+    "_manual/git-guide.md",
+    "_manual/new-project-guide.md",
+    "_manual/handbook.md",
+    "_manual/ai/handoff.md",
+    "_manual/ai/study-prompt.md",
     "04-Resources/外部链接汇总.md",
     "04-Resources/进阶方向.md",
     "脱离 Claude MCP 时的手动工作流.md",
     "README.md",
     "_manual/ai/vault-prompt.md",
     "_manual/ai/vault-root.md",
-    "_manual/ai/handoff.md",
     "_manual/new-project.ps1",
-    "_manual/obsidian-config.md",
-    "_manual/new-project-guide.md",
-    "_manual/handbook.md",
-    "_manual/git-guide.md",
-    "_manual/format-rules.md",
     "_manual/handoff.md",
-    "_manual/structure.md",
     "_manual/vault-prompt.md",
     "_manual/ai",
     "_manual/vault-root.md",
