@@ -15,17 +15,25 @@
 - ✅ 已完成：01 Hello World、02 线程基础、03 信号量、04 Mutex、05 消息队列
 - ⏭ **下一个：06 定时器**
 - 📁 实验记录位置：`02-Projects/QEMU/lab/`
-- 已有文件：`Hello World.md`、`Exp02-Thread-Basics.md`
+- 已有文件：`Hello World.md`、`Exp02-Thread-Basics.md`、`Seemaphore.md`
 
 ### F103ZE
 - 暂时搁置，等 QEMU 全部 22 个实验完成后再推进
 
 ### 最近一次操作（本次对话）
-- 新建 `_manual/ai/` 子文件夹，将 6 个 AI 运行时文件移入
-- 更新 `_manual/ai/vault-prompt.md` 所有路径引用
-- 移动 `02-Projects/new-project.ps1` → `_manual/new-project.ps1`
-- 更新 `_manual/structure.md`：同步 ai/ 子文件夹结构 + new-project.ps1 新位置
-- 更新 `README.md`：_manual/ 文件说明加入 new-project.ps1
+- 删除 `_manual/ai/study-prompt.md`（内容已被 study-context.md 完全覆盖，用 git rm 删除）
+- 更新 `vault-prompt.md` 目录结构，删除 study-prompt.md 条目
+- 重写 `README.md`，加入各目录详细介绍和现有文件清单
+- 多轮重构 `study-context.md`，最终版本为 V2.1，包含：
+  - 六阶段实验节奏（含自我复盘阶段）
+  - 结构化讲解输出【1】-【6】
+  - 调试三级递进（现象/配置/源码）
+  - 模式控制（beginner/engineer/debug/system）
+  - 源码最小阅读规则
+  - 掌握能力判断标准
+  - 纯净输出规则（含代码块格式、反哺路径规则）
+- 修复 `Seemaphore.md` 五类格式问题（对话残留/代码块标注/空行/反哺路径）
+- 更新 `Seemaphore.md` 反哺链接加路径前缀
 
 ---
 
@@ -63,6 +71,7 @@
 
 ## 待办事项
 
+- [ ] 执行 `git rm _manual/ai/study-prompt.md` 删除冗余文件
 - [ ] QEMU 实验 06-22 逐一完成并落地
 - [ ] QEMU 全部完成后更新 study-context.md 的当前阶段描述
 - [ ] QEMU 全部完成后重启 F103ZE 主线
