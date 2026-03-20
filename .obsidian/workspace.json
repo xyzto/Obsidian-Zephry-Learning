@@ -4,67 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "366f2077ffb79147",
+        "id": "a4887c197a346967",
         "type": "tabs",
         "children": [
           {
-            "id": "c7d9c0068573d916",
+            "id": "bc3584e2a9bbf1ad",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "_manual/obsidian-config.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
-            }
-          },
-          {
-            "id": "16777f7f40e73e6a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "README.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "README"
-            }
-          },
-          {
-            "id": "3072a225542aff41",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "_manual/ai/study-context.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "study-context"
-            }
-          },
-          {
-            "id": "c04581798f3495c3",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "02-Projects/QEMU/lab/Seemaphore.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Seemaphore"
+              "title": "obsidian-config"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "vertical"
@@ -198,13 +155,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02-Projects/QEMU/lab/Seemaphore.md",
+                "file": "_manual/obsidian-config.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Seemaphore 的大纲"
+              "title": "obsidian-config 的大纲"
             }
           }
         ],
@@ -226,37 +183,37 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "c04581798f3495c3",
+  "active": "bc3584e2a9bbf1ad",
   "lastOpenFiles": [
-    "Semaphore.md",
-    "02-Projects/QEMU/lab/Seemaphore.md",
-    "02-Projects/QEMU/lab/Hello World.md",
-    "_manual/ai/study-context.md",
-    "_manual/ai/study-prompt.md",
-    "_manual/ai/vault-prompt.md",
-    "_manual/ai/session-log.md",
-    "_manual/format-rules.md",
-    "_manual/obsidian-config.md",
-    "_manual/structure.md",
-    "_manual/git-guide.md",
     "_manual/new-project-guide.md",
     "_manual/handbook.md",
-    "_manual/ai/handoff.md",
+    "_manual/git-guide.md",
+    "_manual/format-rules.md",
+    "01-Concepts/Thread.md",
     "04-Resources/外部链接汇总.md",
+    "05-Questions/什么时候该用信号量而不是互斥锁？.md",
+    "05-Questions/优先级翻转如何发生？.md",
     "04-Resources/进阶方向.md",
-    "脱离 Claude MCP 时的手动工作流.md",
+    "03-Areas/STM32知识图谱.md",
+    "03-Areas/Zephyr-RTOS.md",
+    "01-Concepts/Semaphore.md",
+    "_manual/ai/vault-prompt.md",
+    "Thread_States.md",
+    "Mutex.md",
+    "01-Concepts/QEMU.md",
+    "02-Projects/QEMU/lab/Seemaphore.md",
+    "_manual/ai/study-context.md",
     "README.md",
-    "_manual/ai/vault-root.md",
+    "Semaphore.md",
+    "02-Projects/QEMU/lab/Hello World.md",
+    "_manual/ai/study-prompt.md",
+    "_manual/ai/session-log.md",
+    "_manual/obsidian-config.md",
+    "_manual/structure.md",
+    "_manual/ai/handoff.md",
     "_manual/new-project.ps1",
-    "_manual/handoff.md",
-    "_manual/vault-prompt.md",
     "_manual/ai",
-    "_manual/vault-root.md",
     "_manual/session-log.md.95d6d3133622e875c71b9a811d47bca2.tmp",
-    "_manual/study-prompt.md",
-    "_manual/study-context.md",
-    "_manual/session-log.md",
-    "02-Projects/QEMU/lab/Exp02-Thread-Basics.md",
     "README.md.7e8bf845039c94855173cac33dc7702a.tmp",
     "02-Projects/QEMU/lab",
     "02-Projects/F103ZE/lab",
