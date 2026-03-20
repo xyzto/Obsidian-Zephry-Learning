@@ -25,18 +25,18 @@
 
 **第一步：确定根路径**
 
-读取 `_manual\vault-root.md`（本文件同目录）。
+读取 `_manual\ai\vault-root.md`（本文件同目录下的 ai/ 子文件夹）。
 文件中代码块内的路径即为 `VAULT_ROOT`。
 后续所有路径均为 `VAULT_ROOT + \ + 相对路径`，自行拼接，不依赖任何硬编码绝对路径。
 
-> 唯一的绝对路径入口：`_manual\vault-root.md` 必须由用户在首次使用时告知，或粘贴提示词时手动补充一次。
+> 唯一的绝对路径入口：`_manual\ai\vault-root.md` 必须由用户在首次使用时告知，或粘贴提示词时手动补充一次。
 > 换电脑后只需修改 `vault-root.md` 里的一行路径，其余文件全部不动。
 
 **第二步：定位当前状态**
 
 拼接完整路径后：
-1. 检查 `_manual\handoff.md`——若 `## 交接状态` 不为空，优先读取，从断点接续
-2. 否则读取 `_manual\session-log.md`，定位当前进度
+1. 检查 `_manual\ai\handoff.md`——若 `## 交接状态` 不为空，优先读取，从断点接续
+2. 否则读取 `_manual\ai\session-log.md`，定位当前进度
 
 **第三步：告知用户**
 
@@ -46,7 +46,7 @@
 
 ## 仓库基本信息
 
-- **根路径**：见 `_manual\vault-root.md`
+- **根路径**：见 `_manual\ai\vault-root.md`
 - **领域**：Zephyr RTOS 嵌入式开发（目标：找嵌入式工作）
 - **工具**：Obsidian + Git
 
@@ -66,13 +66,13 @@
 <VAULT_ROOT>\
 ├── README.md
 ├── _templates/             # Concept.md / Question.md / Project.md / Inbox.md
-├── _manual/                # 系统手册（本文件所在位置）
-│   ├── vault-root.md       # ← 根路径声明，换电脑只改这一个文件
-│   ├── vault-prompt.md     # 仓库管理提示词（本文件）
-│   ├── session-log.md      # 会话状态日志
-│   ├── handoff.md          # 对话交接文件 ← 上下文接近上限时写入
-│   ├── study-prompt.md     # 学习辅助提示词（原始版）
-│   ├── study-context.md    # 学习辅助完整上下文（给另一个 AI 用）
+├── _manual/                # 系统手册
+│   ├── ai/                 # AI 运行时文件
+│   │   ├── vault-root.md   # ← 根路径声明，换电脑只改这一个文件
+│   │   ├── vault-prompt.md # 仓库管理提示词（本文件）
+│   │   ├── session-log.md  # 会话状态日志
+│   │   ├── handoff.md      # 对话交接文件 ← 上下文接近上限时写入
+│   │   └── study-context.md# 学习辅助完整上下文（给另一个 AI 用）
 │   ├── format-rules.md     # 笔记格式规范（两份提示词共用）
 │   ├── handbook.md         # 知识库维护手册
 │   ├── new-project-guide.md
@@ -106,6 +106,7 @@
 | 进度 | `02-Projects\<项目名>\progress.md` |
 | 外部链接、参考资料 | `04-Resources\` |
 | 操作手册、配置备份 | `_manual\` |
+| AI 运行时文件 | `_manual\ai\` |
 
 ---
 
@@ -166,8 +167,8 @@
 ### 触发后的操作流程
 
 1. 完成当前任务（不中断）
-2. 更新 `_manual\session-log.md`
-3. 写入 `_manual\handoff.md`（覆盖上次内容）
+2. 更新 `_manual\ai\session-log.md`
+3. 写入 `_manual\ai\handoff.md`（覆盖上次内容）
 4. 给出 git commit 命令
 5. 提示用户新开窗口，粘贴 vault-prompt.md
 
@@ -201,12 +202,12 @@ update(manual):  更新系统文件（vault-prompt / session-log / handoff）
 
 ## 对话结束前（常规结束）
 
-每次对话结束前，更新 `_manual\session-log.md`：
+每次对话结束前，更新 `_manual\ai\session-log.md`：
 - 这次做了什么
 - 当前 QEMU 进度
 - 下一步是什么
 
-若触发上下文警告，额外写入 `_manual\handoff.md`。
+若触发上下文警告，额外写入 `_manual\ai\handoff.md`。
 
 --- 结束粘贴 ---
 

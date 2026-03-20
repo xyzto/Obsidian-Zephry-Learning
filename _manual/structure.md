@@ -1,7 +1,7 @@
 # Structure — 仓库结构说明
 
 > 英文文件名对照中文含义，换电脑或长时间未用时快速找回方向
-> 根路径见：`_manual/vault-root.md`（换电脑只改这一个文件）
+> 根路径见：`_manual/ai/vault-root.md`（换电脑只改这一个文件）
 
 ---
 
@@ -17,7 +17,7 @@
 | `05-Questions/` | 问题 | 整理成型的问题，有猜测有拆解 |
 | `assets/` | 附件 | 图片、PDF 等附件自动存放 |
 | `_templates/` | 模板 | Obsidian 新建笔记时套用 |
-| `_manual/` | 手册 | 系统操作手册和配置备份 |
+| `_manual/` | 手册 | 系统操作手册、脚本工具和配置备份 |
 
 ---
 
@@ -34,20 +34,28 @@
 
 ## `_manual/` 系统手册
 
+### 人工参考手册
+
 | 文件 | 含义 | 用途 |
 |------|------|------|
-| `vault-root.md` | **根路径声明** | 换电脑只改这一个文件，所有路径从此派生 |
+| `format-rules.md` | 笔记格式规范 | 新建文件时对照，两份 AI 提示词共用 |
+| `handbook.md` | 知识库维护手册 | 完整方法论设计文档，通用版本 |
+| `structure.md` | 仓库结构说明 | 本文件 |
+| `new-project-guide.md` | 新建项目说明 | 新增开发板时的标准流程 |
+| `git-guide.md` | Git 使用说明 | workspace 与 learning 仓库分离方案 |
+| `obsidian-config.md` | Obsidian 配置 | 插件、快捷键配置备份 |
+| `new-project.ps1` | 新建项目脚本 | PowerShell 脚本，自动生成项目文件夹结构 |
+
+### AI 运行时文件（`_manual/ai/`）
+
+| 文件 | 含义 | 用途 |
+|------|------|------|
+| `vault-root.md` | 根路径声明 | 换电脑只改这一个文件，所有路径从此派生 |
 | `vault-prompt.md` | 仓库管理提示词 | 开启新对话时粘贴，用于仓库管理（Claude） |
 | `session-log.md` | 会话日志 | 每次对话结束前更新，新对话开始时读取定位 |
 | `handoff.md` | 对话交接文件 | 上下文接近上限时写入，供下个窗口的 AI 接续 |
 | `study-prompt.md` | 学习辅助提示词 | 原始版本，维护用 |
 | `study-context.md` | 学习辅助完整上下文 | 给学习 AI 看的合并版，复制一次即用 |
-| `format-rules.md` | 笔记格式规范 | 两份提示词共用，修改只需改这一处 |
-| `handbook.md` | 知识库维护手册 | 完整方法论设计文档，通用版本 |
-| `new-project-guide.md` | 新建项目说明 | 新增开发板时的标准流程 |
-| `obsidian-config.md` | Obsidian 配置 | 插件、快捷键配置备份 |
-| `git-guide.md` | Git 使用说明 | workspace 与 learning 仓库分离方案 |
-| `structure.md` | 仓库结构说明 | 本文件 |
 
 ---
 

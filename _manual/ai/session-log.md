@@ -20,20 +20,21 @@
 ### F103ZE
 - 暂时搁置，等 QEMU 全部 22 个实验完成后再推进
 
-### 最近一次操作
-- 新建 `_manual/vault-root.md`：根路径单一真相源，换电脑只改这一个文件
-- 更新 `_manual/vault-prompt.md`：移除所有硬编码绝对路径，改为读 vault-root.md 后拼接
-- 更新 `_manual/new-project-guide.md`：移除硬编码路径，引用 vault-root.md
-- 更新 `_manual/structure.md`：新增 vault-root.md 和 handoff.md 条目
+### 最近一次操作（本次对话）
+- 新建 `_manual/ai/` 子文件夹，将 6 个 AI 运行时文件移入
+- 更新 `_manual/ai/vault-prompt.md` 所有路径引用
+- 移动 `02-Projects/new-project.ps1` → `_manual/new-project.ps1`
+- 更新 `_manual/structure.md`：同步 ai/ 子文件夹结构 + new-project.ps1 新位置
+- 更新 `README.md`：_manual/ 文件说明加入 new-project.ps1
 
 ---
 
 ## 双 AI 工作流
 
-| 角色   | AI        | 工具       | 提示词                        |
-| ---- | --------- | -------- | -------------------------- |
-| 仓库管理 | Claude（你） | MCP 读写文件 | `_manual/vault-prompt.md`  |
-| 学习辅助 | 另一个 AI    | 无 MCP    | `_manual/study-context.md` |
+| 角色 | AI | 工具 | 提示词 |
+|------|----|------|--------|
+| 仓库管理 | Claude（你） | MCP 读写文件 | `_manual/ai/vault-prompt.md` |
+| 学习辅助 | 另一个 AI | 无 MCP | `_manual/ai/study-context.md` |
 
 **分工：** 学习 AI 引导实验 → 用户带关键信息过来 → 你落地到仓库文件
 
@@ -52,10 +53,10 @@
 
 ## 下次对话开始时
 
-1. 读 `_manual/vault-root.md` 获取 VAULT_ROOT
-2. 检查 `_manual/handoff.md` 是否有交接内容
+1. 读 `_manual/ai/vault-root.md` 获取 VAULT_ROOT
+2. 检查 `_manual/ai/handoff.md` 是否有交接内容
    - 有 → 优先读 handoff.md，按其指引定位
-   - 无 → 读 session-log.md（本文件）定位
+   - 无 → 读 `_manual/ai/session-log.md`（本文件）定位
 3. 确认状态后告诉用户，说明定位来源
 
 ---

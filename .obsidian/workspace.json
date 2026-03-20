@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_manual/structure.md",
-                "mode": "source",
+                "file": "README.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "structure"
+              "title": "README"
             }
           }
         ],
@@ -184,13 +184,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_manual/structure.md",
+                "file": "README.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "structure 的大纲"
+              "title": "README 的大纲"
             }
           }
         ],
@@ -214,32 +214,35 @@
   },
   "active": "3072a225542aff41",
   "lastOpenFiles": [
+    "脱离 Claude MCP 时的手动工作流.md",
+    "_manual/ai/study-prompt.md",
+    "_manual/ai/study-context.md",
+    "_manual/ai/vault-prompt.md",
+    "_manual/ai/vault-root.md",
+    "_manual/ai/session-log.md",
+    "_manual/ai/handoff.md",
     "README.md",
+    "_manual/new-project.ps1",
+    "_manual/obsidian-config.md",
+    "_manual/new-project-guide.md",
+    "_manual/handbook.md",
+    "_manual/git-guide.md",
+    "_manual/format-rules.md",
+    "_manual/handoff.md",
+    "_manual/structure.md",
+    "_manual/vault-prompt.md",
+    "_manual/ai",
     "_manual/vault-root.md",
     "_manual/session-log.md.95d6d3133622e875c71b9a811d47bca2.tmp",
-    "_manual/vault-prompt.md",
     "_manual/study-prompt.md",
     "_manual/study-context.md",
-    "_manual/structure.md",
-    "_manual/format-rules.md",
-    "_manual/git-guide.md",
-    "_manual/handbook.md",
-    "_manual/handoff.md",
-    "_manual/new-project-guide.md",
     "_manual/session-log.md",
-    "_manual/obsidian-config.md",
     "02-Projects/QEMU/lab/Exp02-Thread-Basics.md",
     "02-Projects/F103ZE/progress.md",
     "01-Concepts/Thread.md",
     "_templates/Concept.md",
     "_templates/Inbox.md",
     "_manual/learning-prompt.md",
-    "_manual/ai-prompt.md",
-    "02-Projects/QEMU/lab/Hello World.md",
-    "02-Projects/QEMU/progress.md",
-    "02-Projects/QEMU/env.md",
-    "02-Projects/QEMU/plan.md",
-    "00-Inbox/从 HAL 库思维切换到 RTOS 思维.md",
     "README.md.7e8bf845039c94855173cac33dc7702a.tmp",
     "02-Projects/QEMU/lab",
     "02-Projects/F103ZE/lab",
@@ -248,8 +251,6 @@
     "_manual/Obsidian插件配置.md.5edbae4de67cc05f9cb5c7c53d10d910.tmp",
     "README.md.1d9629dee4c010bf660284da58c01f6a.tmp",
     "_manual/AI协作提示词.md.eadfa06076357138b449ece06d8936a2.tmp",
-    "02-Projects/项目名",
-    "02-Projects/运行脚本自动建好目录和四个文件.txt",
     "未命名.canvas"
   ]
 }
