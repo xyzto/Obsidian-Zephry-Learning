@@ -23,5 +23,41 @@
       ],
       "key": "Q"
     }
+  ],
+  "quickadd:choice:84b442c4-5aba-4abb-8ade-084aeaa0ba24": [
+    {
+      "modifiers": [
+        "Mod",
+        "Shift"
+      ],
+      "key": "C"
+    }
+  ],
+  "quickadd:choice:c92b1345-8507-4868-bae8-cd5611364efd": [
+    {
+      "modifiers": [
+        "Mod",
+        "Shift"
+      ],
+      "key": "B"
+    }
+  ],
+  "quickadd:choice:66900475-cb0a-45dc-84ef-abcf0016b429": [
+    {
+      "modifiers": [
+        "Mod",
+        "Shift"
+      ],
+      "key": "D"
+    }
+  ],
+  "quickadd:choice:fd4440e3-2ee7-46c4-9b2d-64edc00081b8": [
+    {
+      "modifiers": [
+        "Mod",
+        "Shift"
+      ],
+      "key": "Q"
+    }
   ]
 }
