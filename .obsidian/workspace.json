@@ -13,15 +13,30 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "_manual/ai/study-context.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "study-context"
+            }
+          },
+          {
+            "id": "9fd09321b8947835",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "02-Projects/QEMU/lab/Mutex.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Mutex"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -155,13 +170,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md",
+                "file": "02-Projects/QEMU/lab/Mutex.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "README 的大纲"
+              "title": "Mutex 的大纲"
             }
           }
         ],
@@ -183,34 +198,34 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "bc3584e2a9bbf1ad",
+  "active": "9fd09321b8947835",
   "lastOpenFiles": [
-    "_manual/ai/vault-prompt.md",
-    "_manual/ai/vault-root.md",
-    "_manual/ai/study-prompt.md",
-    "_manual/ai/handoff.md",
-    "_manual/ai/session-log.md",
+    "02-Projects/QEMU/lab/Hello World.md",
+    "02-Projects/QEMU/lab/Mutex.md",
+    "01-Concepts/Priority_Inversion.md",
+    "01-Concepts/Mutex.md",
     "_manual/ai/study-context.md",
-    "README.md",
-    "_manual/new-project-guide.md",
-    "_manual/obsidian-config.md",
-    "_manual/structure.md",
+    "_manual/ai/study-prompt.md",
+    "_manual/ai/vault-prompt.md",
     "_manual/format-rules.md",
-    "_manual/git-guide.md",
-    "_manual/handbook.md",
-    "01-Concepts/Thread.md",
-    "04-Resources/外部链接汇总.md",
-    "05-Questions/什么时候该用信号量而不是互斥锁？.md",
-    "05-Questions/优先级翻转如何发生？.md",
-    "04-Resources/进阶方向.md",
-    "03-Areas/STM32知识图谱.md",
-    "03-Areas/Zephyr-RTOS.md",
+    "未命名.md",
+    "README.md",
+    "未命名 1.md",
+    "_manual/ai/vault-root.md",
+    "02-Projects/QEMU/lab/Thread-Basics.md",
+    "01-Concepts/DeviceTree.md",
+    "01-Concepts/Overlay.md",
+    "01-Concepts/test.md",
     "01-Concepts/Semaphore.md",
-    "Thread_States.md",
-    "Mutex.md",
-    "01-Concepts/QEMU.md",
-    "02-Projects/QEMU/lab/Seemaphore.md",
-    "Semaphore.md",
+    "01-Concepts/Thread.md",
+    "01-Concepts/West.md",
+    "01-Concepts/CMake.md",
+    "05-Questions/驱动程序如何与硬件通信.md",
+    "05-Questions/如何为STM32F103ZE创建自定义Board.md",
+    "05-Questions/什么时候该用信号量而不是互斥锁？.md",
+    "05-Questions/线程调度相关问题集.md",
+    "05-Questions/优先级翻转如何发生？.md",
+    "_manual/ai/handoff.md",
     "_manual/new-project.ps1",
     "_manual/ai",
     "_manual/session-log.md.95d6d3133622e875c71b9a811d47bca2.tmp",
