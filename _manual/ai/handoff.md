@@ -8,41 +8,35 @@
 
 ## 交接状态
 
-**写入时间**：2026-03-20
-**触发原因**：⚠️ 黄色警告——对话轮次长，文件读取多，当前任务已完成
+**写入时间**：2026-03-21
+**触发原因**：⚠️ 黄色警告——对话轮次极长（跨越多个主题），当前任务已完成
 
 ### 本次对话改动的文件
 
 | 文件路径 | 操作 | 说明 |
 |---------|------|------|
-| `_manual/ai/`（新建文件夹） | 创建 | AI 运行时文件专用子文件夹 |
-| `_manual/ai/vault-prompt.md` | 从 `_manual/` 移入并更新 | 所有路径引用改为 `_manual\ai\` |
-| `_manual/ai/study-prompt.md` | 从 `_manual/` 移入 | 无改动 |
-| `_manual/ai/study-context.md` | 从 `_manual/` 移入 | 无改动 |
-| `_manual/ai/handoff.md` | 从 `_manual/` 移入 | 本文件 |
-| `_manual/ai/session-log.md` | 从 `_manual/` 移入并更新 | 路径引用同步更新 |
-| `_manual/ai/vault-root.md` | 从 `_manual/` 移入 | 无改动 |
-| `_manual/new-project.ps1` | 从 `02-Projects/` 移入 | 工具脚本归入系统手册 |
-| `_manual/structure.md` | 更新 | 同步 ai/ 子文件夹结构，加入 new-project.ps1 条目 |
-| `README.md` | 更新（两次） | 新增 `_manual/` 文件说明表格；加入 new-project.ps1 条目 |
+| `02-Projects/QEMU/lab/Mutex.md` | 修复 | 代码块格式问题：语言标识符、现象列表改为文字、坑格式规范化 |
+| `_manual/format-rules.md` | 更新 | 新增"代码块"规范小节，禁止单独写语言名称行，补充现象部分规则 |
+| `_manual/ai/study-context.md` | 更新 | BEGIN/END FORMAT RULES 块同步加入代码块规范和现象部分规则 |
 
 ### QEMU 实验进度
 
-- 已完成：01–05
-- **下一个：06 定时器**
+- ✅ 已完成：01 Hello World、02 线程基础、03 信号量、04 Mutex、05 消息队列
+- ⏭ **下一个：06 定时器**
+- 📁 lab/ 现有文件：`Hello World.md`、`Exp02-Thread-Basics.md`、`Seemaphore.md`、`Mutex.md`
 
 ### 未完成的任务
 
-无。本次对话全部为仓库结构整理，无实验落地任务。
+无，所有任务已完成。
 
 ### 需要注意的上下文
 
-- `_manual/ai/` 分类已完全执行完毕，结构稳定
-- `02-Projects/` 内部结构（plan/progress/env/lab）无变动
-- `_templates/` 无变动
-- `new-project.ps1` 里有一行硬编码路径 `E:\OB-Vaults\Zephry\02-Projects\$name`，换电脑后需要手动修改（或改为读 vault-root.md，但目前未处理，留作以后优化）
+- `_manual/ai/` 子文件夹结构稳定，本次无变动
+- format-rules.md 是唯一格式真相来源，study-context.md 里的 FORMAT RULES 块已与其同步
+- Mutex.md 已修复，格式现在符合规范
+- session-log.md 里记录的 `Seemaphore.md` 存在，需确认文件名拼写是否正确（疑似应为 Semaphore.md）
 
 ### 给下一个 AI 的指令
 
 读完本文件后，告诉用户：
-"已从 handoff.md 定位。本次仓库整理全部完成，结构已稳定。QEMU 进度 01-05，下一个是 06 定时器。等你的指令。"
+"已从 handoff.md 定位。上次修复了 Mutex.md 格式并更新了 format-rules.md。QEMU 进度 01-05 完成，下一个是 06 定时器。等你的指令。"
