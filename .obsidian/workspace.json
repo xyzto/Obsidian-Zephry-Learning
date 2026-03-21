@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_manual/ai/vault-prompt.md",
-                "mode": "source",
+                "file": "02-Projects/QEMU/lab/MessageQueues.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "vault-prompt"
+              "title": "MessageQueues"
             }
           }
         ],
@@ -170,13 +170,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_manual/ai/vault-prompt.md",
+                "file": "02-Projects/QEMU/lab/MessageQueues.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "vault-prompt 的大纲"
+              "title": "MessageQueues 的大纲"
             }
           }
         ],
@@ -201,12 +201,13 @@
   "active": "9fd09321b8947835",
   "lastOpenFiles": [
     "02-Projects/QEMU/lab/Mutex.md",
+    "02-Projects/QEMU/lab/MessageQueues.md",
     "_manual/ai/study-context.md",
+    "_manual/ai/study-prompt.md",
+    "_manual/ai/vault-prompt.md",
     "02-Projects/QEMU/lab/Hello World.md",
     "01-Concepts/Priority_Inversion.md",
     "01-Concepts/Mutex.md",
-    "_manual/ai/study-prompt.md",
-    "_manual/ai/vault-prompt.md",
     "_manual/format-rules.md",
     "未命名.md",
     "README.md",
@@ -225,7 +226,6 @@
     "05-Questions/什么时候该用信号量而不是互斥锁？.md",
     "05-Questions/线程调度相关问题集.md",
     "05-Questions/优先级翻转如何发生？.md",
-    "_manual/ai/handoff.md",
     "_manual/new-project.ps1",
     "_manual/ai",
     "_manual/session-log.md.95d6d3133622e875c71b9a811d47bca2.tmp",
