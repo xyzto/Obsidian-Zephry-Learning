@@ -10,6 +10,23 @@
 
 ---
 
+## 关键机制
+
+**启动序列**：`z_cstart()` 完成内核初始化后，调度器接管 CPU，`main()` 作为第一个用户线程被调度执行，而非直接调用——Boot Banner 先于 `main()` 打印是这一机制的直接证据。
+
+**printk 可用时机**：不依赖 libc，直接写硬件串口，因此在内核初始化早期和中断上下文中均可使用。
+
+**CONFIG_BOARD 来源**：编译期由 Kconfig 写入 `autoconf.h`，值即 `-b` 参数指定的 board 名称，运行时无需查询硬件。
+
+---
+
+## 源码位置
+
+→ 源码路径：`kernel/init.c`
+→ 关键函数：`z_cstart()`、`z_boot_banner()`、`z_thread_entry()`
+
+---
+
 ## 源码
 
 ### main.c
@@ -55,24 +72,19 @@ Ctrl + A → X
 
 ## 现象
 
-```
-*** Booting Zephyr OS build vX.X.X ***
-Hello World! qemu_cortex_m3
-```
+终端先打印启动横幅 `*** Booting Zephyr OS build vX.X.X ***`，随后输出 `Hello World! qemu_cortex_m3`，其中 board 名称由 `CONFIG_BOARD` 宏在编译期注入。Banner 先于 `main()` 打印，验证了内核初始化在进入 `main` 前已完成。
+
 ![[Pasted image 20260320090403.png]]
+
 ---
 
 ## 坑
-
-<!-- 暂无 -->
 
 ---
 
 ## 结论
 
-- Zephyr 启动时先打印 Banner，发生在 `main()` 之前，说明内核初始化在进入 `main` 前已经完成
-- `CONFIG_BOARD` 是编译时自动生成的宏，值就是 `-b` 指定的 board 名称
-- `printk` 在 QEMU 下直接输出到终端，无需额外配置串口
+Zephyr 的启动流程是"内核初始化 → 调度器启动 → main() 作为线程被调度"，`main()` 不是程序入口而是第一个用户线程。换成 STM32F103ZE 实板，内核启动机制与 QEMU 完全一致，无迁移成本。
 
 ---
 
@@ -104,5 +116,5 @@ A：由 Kconfig 构建系统在编译阶段自动生成，写入 `build/zephyr/i
 
 ## 反哺
 
-→ [[QEMU]]
-→ [[Zephyr启动与设备初始化]]
+→ [[01-Concepts/QEMU]]
+→ [[01-Concepts/Zephyr启动与设备初始化]]

@@ -5,25 +5,26 @@
 
 ---
 
-## 最后更新：2026-03-21
+## 最后更新：2026-03-22（第四次）
 
 ---
 
 ## 当前状态
 
 ### QEMU 实验进度
-- ✅ 已完成：01 Hello World、02 线程基础、03 信号量、04 Mutex、05 消息队列
-- ⏭ **下一个：06 定时器**
+- ✅ 已完成：01 Hello World、02 线程基础、03 信号量、04 Mutex、05 消息队列、06 定时器、08 事件标志、09 内存池、10 栈溢出检测
+- ⚠️ 07 工作队列跳过，占位文件已建，实验待做
+- ⏭ **下一个：07 工作队列**
 - 📁 实验记录位置：`02-Projects/QEMU/lab/`
-- 已有文件：`Hello World.md`、`Exp02-Thread-Basics.md`、`Seemaphore.md`、`Mutex.md`
 
 ### F103ZE
 - 暂时搁置，等 QEMU 全部 22 个实验完成后再推进
 
 ### 最近一次操作（本次对话）
-- 修复 `02-Projects/QEMU/lab/Mutex.md`：代码块语言标识符格式、现象改为文字描述、坑格式规范化
-- 更新 `_manual/format-rules.md`：新增代码块规范（禁止单独写语言名称行）、补充现象部分不用有序列表规则
-- 同步更新 `_manual/ai/study-context.md` FORMAT RULES 块
+- 确定关键机制最终格式：按信息层次拆成多行，每行 `**标签名**：说明文字`
+- 重写全部 6 个已完成实验的关键机制（Hello World、Thread-Basics、Seemaphore、MessageQueues、Heap、StackSentinel）
+- 更新 format-rules.md：关键机制规范改为多行标签格式，模板同步更新
+- 待办：刷新 study-context.md 的 FORMAT RULES 块
 
 ---
 
@@ -51,17 +52,17 @@
 
 ## 下次对话开始时
 
-1. 读 `_manual/ai/vault-root.md` 获取 VAULT_ROOT
-2. 检查 `_manual/ai/handoff.md` 是否有交接内容
+1. 检查 `_manual/ai/handoff.md` 是否有交接内容
    - 有 → 优先读 handoff.md，按其指引定位
    - 无 → 读本文件定位
-3. 确认状态后告诉用户，说明定位来源
+2. 确认状态后告诉用户，说明定位来源
 
 ---
 
 ## 待办事项
 
+- [ ] 刷新 study-context.md 的 FORMAT RULES 块（format-rules.md 已更新）
 - [ ] 确认 `Seemaphore.md` 文件名拼写（疑似应为 Semaphore.md）
-- [ ] QEMU 实验 06-22 逐一完成并落地
+- [ ] QEMU 实验 07、11-22 逐一完成并落地
 - [ ] QEMU 全部完成后更新 study-context.md 的当前阶段描述
 - [ ] QEMU 全部完成后重启 F103ZE 主线
