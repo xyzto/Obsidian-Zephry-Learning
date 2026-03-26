@@ -92,17 +92,17 @@ Inbox：[N 个文件，⚠️ 建议清理 / 正常]
 
 ## 文件放置规则
 
-| 内容类型 | 路径 |
-|---------|------|
-| 灵光一现、未整理的问题 | `00-Inbox/` |
-| 整理成型的问题 | `05-Questions/` |
-| 知识概念 | `01-Concepts/` |
-| QEMU 实验记录 | `02-Projects/QEMU/lab/` |
-| F103ZE 实验记录 | `02-Projects/F103ZE/lab/` |
-| 项目进度 | `02-Projects/<项目名>/progress.md` |
-| 外部参考资料 | `04-Resources/` |
-| 操作手册、配置 | `_manual/` |
-| AI 运行时文件 | `_manual/ai/` |
+| 内容类型        | 路径                              |
+| ----------- | ------------------------------- |
+| 灵光一现、未整理的问题 | `00-Inbox/`                     |
+| 整理成型的问题     | `05-Questions/`                 |
+| 知识概念        | `01-Concepts/`                  |
+| QEMU 实验记录   | `02-Projects/QEMU/lab/`         |
+| F103ZE 实验记录 | `02-Projects/F103ZE/lab/`       |
+| 项目进度        | `02-Projects/<项目名>/progress.md` |
+| 外部参考资料      | `04-Resources/`                 |
+| 操作手册、配置     | `_manual/`                      |
+| AI 运行时文件    | `_manual/ai/`                   |
 
 ---
 
