@@ -4,95 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "a4887c197a346967",
+        "id": "2d56f50ef0f15c3b",
         "type": "tabs",
         "children": [
           {
-            "id": "bc3584e2a9bbf1ad",
+            "id": "b7679bf1bf8a250d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_manual/ai/study-context.md",
+                "file": "_manual/ai/state.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "study-context"
-            }
-          },
-          {
-            "id": "9fd09321b8947835",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "01-Concepts/QEMU.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "QEMU"
-            }
-          },
-          {
-            "id": "b8d1f8617b2af651",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "00-Inbox/Zephyr2026实际情况的嵌入式选型参考.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Zephyr2026实际情况的嵌入式选型参考"
-            }
-          },
-          {
-            "id": "4b7ee7eb682bc34d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "02-Projects/QEMU/lab/EventFlags.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "EventFlags"
-            }
-          },
-          {
-            "id": "8f7e95ef1c75170d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "02-Projects/QEMU/lab/Heap.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Heap"
-            }
-          },
-          {
-            "id": "11dab1a5a3f92c94",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "_manual/ai/study-context.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "study-context"
+              "title": "state"
             }
           }
-        ],
-        "currentTab": 5
+        ]
       }
     ],
     "direction": "vertical"
@@ -112,7 +41,7 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": true
               },
               "icon": "lucide-folder-closed",
               "title": "文件列表"
@@ -124,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "fi",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -149,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 262.5026054382324
   },
   "right": {
     "id": "898607c22d85f04f",
@@ -226,13 +155,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_manual/ai/study-context.md",
+                "file": "02-Projects/QEMU/lab/DeviceModel.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "study-context 的大纲"
+              "title": "DeviceModel 的大纲"
             }
           }
         ],
@@ -240,7 +169,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -254,34 +184,34 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "2a95b958acb08dd4",
+  "active": "b7679bf1bf8a250d",
   "lastOpenFiles": [
+    "_manual/脱离 Claude MCP 时的手动工作流.md",
+    "README.md",
     "_manual/ai/study-prompt.md",
-    "02-Projects/QEMU/lab/WorkQueue.md",
-    "02-Projects/QEMU/lab/Mutex.md",
-    "02-Projects/QEMU/lab/Seemaphore.md",
-    "02-Projects/QEMU/lab/Timer.md",
-    "02-Projects/QEMU/lab/Thread-Basics.md",
-    "02-Projects/QEMU/lab/Hello World.md",
-    "02-Projects/QEMU/lab/Heap.md",
-    "02-Projects/QEMU/lab/EventFlags.md",
-    "_templates/Project.md",
-    "_manual/ai/vault-prompt.md",
-    "_manual/new-project-guide.md",
-    "02-Projects/QEMU/lab/StackSentinel.md",
-    "02-Projects/QEMU/lab/MessageQueues.md",
-    "_manual/obsidian-config.md",
-    "01-Concepts/EventFlags.md",
-    "00-Inbox/Zephyr2026实际情况的嵌入式选型参考.md",
-    "00-Inbox/Zephyr不支持市场常见板原因.md",
-    "00-Inbox/STM32F407在Zephyr的支持情况.md",
-    "未命名 1.md",
-    "未命名.md",
     "_manual/ai/study-context.md",
+    "_manual/structure.md",
+    "_manual/obsidian-config.md",
+    "_manual/new-project-guide.md",
+    "_manual/handbook.md",
+    "_manual/git-guide.md",
     "_manual/ai/session-log.md",
-    "01-Concepts/Workqueue.md",
+    "_manual/ai/state.md",
+    "_manual/ai/vault-root.md",
+    "_manual/ai/vault-prompt.md",
     "02-Projects/QEMU/progress.md",
-    "01-Concepts/QEMU.md",
+    "02-Projects/QEMU/plan.md",
+    "_manual/ai/handoff.md",
+    "02-Projects/QEMU/lab/Semaphore.md",
+    "脱离 Claude MCP 时的手动工作流.md",
+    "02-Projects/QEMU/lab/EventFlags.md",
+    "02-Projects/QEMU/lab/DeviceModel.md",
+    "02-Projects/QEMU/lab/GPIO_Interrupt.md",
+    "02-Projects/QEMU/lab/Heap.md",
+    "未命名.md",
+    "未命名 1.md",
+    "00-Inbox/Windows 注册表 vs 系统变量.md",
+    "05-Questions/中断风暴 (Interrupt Storm).md",
     "_manual/new-project.ps1",
     "_manual/ai",
     "_manual/session-log.md.95d6d3133622e875c71b9a811d47bca2.tmp",

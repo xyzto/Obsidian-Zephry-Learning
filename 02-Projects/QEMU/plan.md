@@ -40,14 +40,14 @@
 
 > 目标：掌握 Zephyr 驱动框架，理解 DTS → 驱动 → API 的完整链条
 
-| 编号 | 实验 | 验证目标 | 状态 |
-|------|------|---------|------|
-| 11 | UART 基础 | uart_poll_out / uart_poll_in 收发 | 待做 |
-| 12 | UART 中断 | uart_irq_callback_set、中断接收 | 待做 |
-| 13 | GPIO 模拟 | native_sim 下 GPIO 虚拟设备操作 | 待做 |
-| 14 | 驱动模型阅读 | 读 gpio_stm32.c，理解 DEVICE_DT_DEFINE | 待做 |
-| 15 | 设备树覆盖 | app.overlay 修改 UART 参数、验证合并结果 | 待做 |
-| 16 | Flash 存储 | 模拟 Flash 读写，理解 NVS / Settings 子系统 | 待做 |
+| 编号  | 实验       | 验证目标                               | 状态  |
+| --- | -------- | ---------------------------------- | --- |
+| 11  | UART 基础  | uart_poll_out / uart_poll_in 收发    | 待做  |
+| 12  | UART 中断  | uart_irq_callback_set、中断接收         | 待做  |
+| 13  | GPIO 模拟  | native_sim 下 GPIO 虚拟设备操作           | 待做  |
+| 14  | 驱动模型阅读   | 读 gpio_stm32.c，理解 DEVICE_DT_DEFINE | 待做  |
+| 15  | 设备树覆盖    | app.overlay 修改 UART 参数、验证合并结果      | 待做  |
+| 16  | Flash 存储 | 模拟 Flash 读写，理解 NVS / Settings 子系统  | 待做  |
 
 ---
 
