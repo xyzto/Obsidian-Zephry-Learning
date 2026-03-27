@@ -5,7 +5,7 @@
 
 ---
 
-## 最后更新：2026-03-26
+## 最后更新：2026-03-27
 
 ---
 
@@ -24,25 +24,25 @@
 
 ## 最近操作
 
-- 工作流重构：合并 session-log + handoff → `state.md`
-- 更新 `_templates/Concept.md`：新增 `## 验证记录` 字段
-- 重写 `_manual/ai/vault-prompt.md`：精简启动流程、修正 MCP 工具名、新增 Inbox 自动检查、落地五步流程（含 Questions 状态联动 + study-context 强制同步）
-- 重写 `_manual/ai/study-prompt.md`：进度表同步至真实状态（V3.0）、阶段 6 加入仓库 AI 落地提醒
-- 重写 `_manual/ai/study-context.md`：同步所有以上改动、Concept 模板加入验证记录字段
-- 删除 `_manual/ai/session-log.md` 和 `_manual/ai/handoff.md`
+- 清理 00-Inbox：删除 `4000字.md`、`Study-Prompt.md`（prompt 草稿）、`Windows 注册表 vs 系统变量.md`（与「环境变量」版重复）
+- 流转 Zephyr 文件：
+  - `STM32F407在Zephyr的支持情况.md` → `05-Questions/`
+  - `Zephyr2026实际情况的嵌入式选型参考.md` → `05-Questions/`
+  - `Zephyr不支持市场常见板原因.md` → `05-Questions/`
+  - `什么是 Zephyr 子系统.md` → `01-Concepts/Zephyr子系统.md`
 
 ---
 
 ## 下一步
 
 - 继续 QEMU 实验 15 设备树覆盖
-- 清理 00-Inbox（见待办）
+- 处理 00-Inbox 剩余文件（见待办）
 
 ---
 
 ## 待办
 
-- [ ] 清理 00-Inbox：删除 `Study-Prompt.md`、`4000字.md`（prompt 草稿），合并 Windows 注册表两个重复文件，Zephyr 相关内容流转到 Questions
+- [ ] 处理 00-Inbox 剩余文件：`GDB.md`、`从 HAL 库思维切换到 RTOS 思维.md`、`落地的第一版工程骨架.md`（归属未定）
 - [ ] 合并或确认 `01-Concepts/Workqueue.md` 与 `k_work.md` 是否重复
 - [ ] 将 `01-Concepts/EventFlags.md` 重命名为 `k_event.md` 消除歧义
 - [ ] 检查 `05-Questions/优先级翻转如何发生？.md` 状态是否应标为已解决

@@ -18,7 +18,8 @@
 ## 环境声明
 
 - **MCP 工具**：obsidian-notes-mcp，已配置完毕。
-  可用工具：`obsidian:read_note`、`obsidian:create_note`、`obsidian:update_note`、`obsidian:delete_note`、`obsidian:list_notes`、`obsidian:search`、`obsidian:batch_create`。
+  可用工具：`obsidian:read_note`、`obsidian:update_note`、`obsidian:delete_note`、`obsidian:list_notes`、`obsidian:search`、`obsidian:batch_create`、`obsidian:vault_stats`。
+  注意：不存在 `obsidian:create_note`，新建文件一律使用 `obsidian:batch_create`。
   所有路径均为 vault 内相对路径，直接使用，无需拼接根路径。
 - **铁律：执行任何操作前，必须先用工具读取文件的实际内容，禁止凭记忆或推断行事。**
 
@@ -125,11 +126,12 @@ Inbox：[N 个文件，⚠️ 建议清理 / 正常]
 
 **链接路径规则（必须写完整路径）：**
 - Concept 的 `## 产生的问题`：`[[05-Questions/问题名]]`
+- Concept 的 `## 验证记录`：`[[02-Projects/QEMU/lab/实验文件名]]`
 - 实验记录的 `## 反哺`：`[[01-Concepts/概念名]]`
 
 ---
 
-## 实验落地标准流程（每次落地必须完整执行以下四步）
+## 实验落地标准流程（每次落地必须完整执行以下五步）
 
 用户带来：目标 / 现象 / 结论 / 疑问 / 坑（可选）
 

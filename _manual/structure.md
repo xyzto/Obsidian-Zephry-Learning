@@ -50,12 +50,11 @@
 
 | 文件 | 含义 | 用途 |
 |------|------|------|
-| `vault-root.md` | 根路径声明 | 换电脑只改这一个文件，所有路径从此派生 |
-| `vault-prompt.md` | 仓库管理提示词 | 开启新对话时粘贴，用于仓库管理（Claude） |
-| `session-log.md` | 会话日志 | 每次对话结束前更新，新对话开始时读取定位 |
-| `handoff.md` | 对话交接文件 | 上下文接近上限时写入，供下个窗口的 AI 接续 |
-| `study-prompt.md` | 学习辅助提示词 | 原始版本，维护用 |
-| `study-context.md` | 学习辅助完整上下文 | 给学习 AI 看的合并版，复制一次即用 |
+| `vault-root.md` | 根路径声明 | 换电脑只改这一个文件；MCP 环境下仅供脚本使用，AI 无需读取 |
+| `state.md` | 仓库状态文件 | 唯一状态文件，替代原 session-log + handoff；每次对话必读必写 |
+| `vault-prompt.md` | 仓库管理提示词 | 开启新对话时粘贴，用于仓库管理（Claude + MCP） |
+| `study-prompt.md` | 学习辅助提示词 | 原始版本，维护用；修改后执行"刷新 study-context" |
+| `study-context.md` | 学习辅助完整上下文 | 给学习 AI 看的合并版（study-prompt + format-rules），复制一次即用 |
 
 ---
 
